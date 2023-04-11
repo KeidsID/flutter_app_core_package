@@ -1,3 +1,8 @@
-## 0.0.1
+## 1.0.0
 
-* TODO: Describe initial release.
+Basic App Utils Added.
+
+- appName
+- appPrimaryColor
+- appSecondaryColor
+- AppThemes (Provide theme on both modes).
