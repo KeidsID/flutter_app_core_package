@@ -11,7 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-A package that provide basic utils like Themes and Error Handler Widget.
+A package that provide basic utils like Themes, common BuildContext extension and Error Handler Pages.
 
 Great for creating lots of flutter apps as a portfolio.
 
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: appName, // Provided by core.dart
-      theme: AppThemes.light,
+      theme: AppThemes.light, // Provided by core.dart
       darkTheme: AppThemes.dark, // Provided by core.dart
       ...
     );
@@ -39,7 +39,15 @@ class MyApp extends StatelessWidget {
 
 ## Getting started
 
-You just need to call `init()` once on `main()`.
+Add the package to your depedencies
+```yaml
+depedencies:
+  core:
+    git:
+      url: https://github.com/KeidsID/flutter_app_core_package.git
+```
+
+Then you just need to call `init()` once on `main()`.
 
 ```dart
 import 'package:core/core.dart' as core;
@@ -66,7 +74,7 @@ void main() {
 }
 ```
 
-Then you can use the themes from this package.
+Now you are ready to use this package's utilities.
 
 ## Usage
 
@@ -91,8 +99,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: core.appName,
-      theme: core.AppThemes.light,
+      title: core.appName, // "Flutter Demo"
+      theme: core.AppThemes.light, // Both theme used material 3
       darkTheme: core.AppThemes.dark,
       themeMode: ThemeMode.system,
       home: Scaffold(
