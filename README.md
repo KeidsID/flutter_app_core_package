@@ -37,9 +37,43 @@ class MyApp extends StatelessWidget {
 }
 ```
 
+- Need shorthand for the common use of context? Try the BuildContext extension from this package
+
+```dart
+import 'package:core/core.dart'
+
+class MyWidget extends StatelessWidget {
+  const MyWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // Shorthand for Theme.of(context)
+    context.theme;
+
+    // Shorthand for Theme.of(context).brightness == Brightness.dark
+    context.isDarkMode;
+
+    // Shorthand for Theme.of(context).textTheme
+    context.textTheme;
+
+    // Shorthand for MediaQuery.of(context)
+    context.mediaQuery;
+
+    // Shorthand for MediaQuery.of(context).size
+    context.screenSize;
+
+    // Shorthand for Scaffold.of(context)
+    context.scaffoldState;
+
+    return Container;
+  }
+}
+```
+
 ## Getting started
 
 Add the package to your depedencies
+
 ```yaml
 depedencies:
   core:

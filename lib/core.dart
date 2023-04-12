@@ -2,9 +2,10 @@ library core;
 
 import 'package:flutter/material.dart';
 
-import 'common/utils/data.dart' as data;
+import 'src/utils/data.dart' as data;
 
-export 'common/utils/data.dart';
+export 'src/utils/data.dart';
+export 'src/utils/extensions.dart';
 
 TextTheme? _appTextTheme;
 bool? _useMaterial3;
@@ -23,15 +24,15 @@ void init({
   _appTextTheme = appTextTheme;
   _useMaterial3 = useMaterial3;
 
-  AppThemes.light = AppThemes._appTheme(Brightness.light);
-  AppThemes.dark = AppThemes._appTheme(Brightness.dark);
+  AppThemes.light = AppThemes._getAppTheme(Brightness.light);
+  AppThemes.dark = AppThemes._getAppTheme(Brightness.dark);
 }
 
 abstract class AppThemes {
   static ThemeData? light;
   static ThemeData? dark;
 
-  static ThemeData _appTheme(Brightness brightness) {
+  static ThemeData _getAppTheme(Brightness brightness) {
     return ThemeData.from(
       colorScheme: ColorScheme.fromSeed(
         seedColor: data.appPrimaryColor,
