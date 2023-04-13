@@ -50,20 +50,13 @@ class MyWidget extends StatelessWidget {
     // Shorthand for Theme.of(context)
     context.theme;
 
-    // Shorthand for Theme.of(context).brightness == Brightness.dark
-    context.isDarkMode;
-
-    // Shorthand for Theme.of(context).textTheme
-    context.textTheme;
-
     // Shorthand for MediaQuery.of(context)
     context.mediaQuery;
 
-    // Shorthand for MediaQuery.of(context).size
-    context.screenSize;
-
     // Shorthand for Scaffold.of(context)
     context.scaffoldState;
+
+    // Check "src/utils/extensions.dart" for more
 
     return Container;
   }

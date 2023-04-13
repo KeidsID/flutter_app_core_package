@@ -1,18 +1,23 @@
-## 1.1.0 - 2023/04/13
+## 1.1.0-dev
 
 ### Added
 
 - The common use of BuildContext as a dart extension.
+
   - `context.theme` (Shorthand for `Theme.of(context)`)
   - `context.mediaQuery` (Shorthand for `MediaQuery.of(context)`)
   - `context.scaffoldState` (Shorthand for `Scaffold.of(context)`)
   - Check **src/utils/extensions.dart** for more.
 
+- Basic Pages to display error status based on MDN Web Docs.
+  - `ErrorPages.client` (List of client error/400-499 status codes).
+  - `ErrorPages.server` (List of server error/500-599 status codes).
+
 ### Changed
 
 - Rename the `common` folder to `src`.
 
-## 1.0.0 - 2023/04/11
+## 1.0.0
 
 ### Added
 
@@ -22,5 +27,3 @@
   - `appPrimaryColor`
   - `appSecondaryColor`
   - `AppThemes` (Provide theme on both modes).
-
-- Unit test for `init()` functionality.
