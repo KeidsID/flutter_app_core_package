@@ -12,6 +12,7 @@
 - Basic Pages to display error status based on MDN Web Docs.
   - `ErrorPages.client` (List of client error/400-499 status codes).
   - `ErrorPages.server` (List of server error/500-599 status codes).
+  - `ErrorPages.getByCode()` (Get an ErrorPage based on the provided statusCode).
 
 ### Changed
 

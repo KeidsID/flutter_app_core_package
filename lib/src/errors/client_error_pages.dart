@@ -6,6 +6,12 @@ final Map<int, _GetDefinedErrorPage> _clientErrorPagesMap = {
   403: 'Forbidden',
   404: 'Not Found',
   405: 'Method Not Allowed',
+  406: 'Not Acceptable',
+  407: 'Proxy Authentication Required',
+  408: 'Request Timeout',
+  409: 'Conflict',
+  410: 'Gone',
+  411: 'Length Required',
 }.map(
   (statusCode, name) => MapEntry(
     statusCode,
@@ -60,11 +66,55 @@ class _ClientErrorPages {
   /// a particular resource.
   final _GetDefinedErrorPage methodNotAllowed;
 
+  /// '406 Not Acceptable`
+  ///
+  /// This response is sent by the server when it cannot find any content that
+  /// matches the criteria specified by the user agent, even after performing
+  /// server-driven content negotiation.
+  final _GetDefinedErrorPage notAcceptable;
+
+  /// `407 Proxy Authentication Required`
+  ///
+  /// This error is similar to 401 Unauthorized, but in this case,
+  /// authentication must be performed by a proxy.
+  final _GetDefinedErrorPage proxyAuthenticationRequired;
+
+  /// `408 Request Timeout`
+  ///
+  /// Some servers may send this response on an idle connection to indicate
+  /// that they wish to terminate the unused connection. This may occur even
+  /// without any prior request from the client.
+  final _GetDefinedErrorPage requestTimeout;
+
+  /// `409 Conflict`
+  ///
+  /// This response is sent when a request conflicts with the server's current
+  /// state.
+  final _GetDefinedErrorPage conflict;
+
+  /// `410 Gone`
+  ///
+  /// The requested content has been permanently deleted from the server, with
+  /// no forwarding address.
+  final _GetDefinedErrorPage gone;
+
+  /// `411 Length Required`
+  ///
+  /// The server rejected the request because the `Content-Length` header field
+  /// is required but not defined.
+  final _GetDefinedErrorPage lengthRequired;
+
   const _ClientErrorPages({
     required this.badRequest,
     required this.unauthorized,
     required this.forbidden,
     required this.notFound,
     required this.methodNotAllowed,
+    required this.notAcceptable,
+    required this.proxyAuthenticationRequired,
+    required this.requestTimeout,
+    required this.conflict,
+    required this.gone,
+    required this.lengthRequired,
   });
 }

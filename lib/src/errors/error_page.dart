@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../utils/extensions.dart';
-import 'error_pages.dart'; // Docs purpose
+import 'error_pages.dart';
 
 class ErrorPage extends StatelessWidget {
   final int statusCode;
