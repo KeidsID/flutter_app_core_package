@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../error_pages.dart';
-import '../../utils/extensions.dart';
+import '../utils/extensions.dart';
+import 'error_pages.dart'; // Docs purpose
 
 class ErrorPage extends StatelessWidget {
   final int statusCode;
@@ -13,14 +13,18 @@ class ErrorPage extends StatelessWidget {
   /// Usage example:
   ///
   /// ```dart
-  /// Widget onNotFoundError() {
-  ///   return ErrorPage(statusCode: 404, name: 'Not Found');
+  /// Widget onNotFoundError({String? message}) {
+  ///   return ErrorPage(
+  ///     statusCode: 404,
+  ///     name: 'Not Found',
+  ///     message: message,
+  ///   );
   /// }
   /// ```
   ///
-  /// Use this only to create a custom error page. If you want
-  /// already defined error pages, check [ErrorPages]  at
-  /// `src/errors/error_pages.dart`.
+  /// Use this method exclusively to create a custom error page. If you require
+  /// pre-defined error pages, please refer to [ErrorPages]
+  /// located at `src/errors/error_pages.dart`.
   const ErrorPage({
     super.key,
     required this.statusCode,
