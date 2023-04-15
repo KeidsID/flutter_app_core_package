@@ -5,7 +5,7 @@ final Map<int, _GetDefinedErrorPage> _clientErrorPagesMap = {
   401: 'Unauthorized',
   403: 'Forbidden',
   404: 'Not Found',
-  422: 'Unprocessable Content',
+  405: 'Method Not Allowed',
 }.map(
   (statusCode, name) => MapEntry(
     statusCode,
@@ -19,19 +19,52 @@ final Map<int, _GetDefinedErrorPage> _clientErrorPagesMap = {
 );
 
 class _ClientErrorPages {
+  // Please sort the props by status code.
+
   /// `400 Bad Request`
   ///
-  /// Error caused by client request (e.g, malformed request syntax,
-  /// invalid message framing, or deceptive reqeust routing).
+  /// This error is caused by the client's request, which may include malformed
+  /// request syntax, invalid message framing, or deceptive request routing.
   final _GetDefinedErrorPage badRequest;
+
+  /// `401 Unauthorized`
+  ///
+  /// Note that although the HTTP standard uses the term "unauthorized", the
+  /// intended meaning of this response is actually "unauthenticated". In other
+  /// words, the client needs to authenticate itself in order to receive the
+  /// requested response.
   final _GetDefinedErrorPage unauthorized;
+
+  /// `403 Forbidden`
+  ///
+  /// The term "unauthorized" in its true sense refers to a situation where
+  /// access to a resource is forbidden or lacking proper authentication,
+  /// unlike the HTTP response code `401 Unauthorized`.
+  final _GetDefinedErrorPage forbidden;
+
+  /// `404 Not Found`
+  ///
+  /// This error occurs when the server cannot find the requested resource. In
+  /// a web browser, this typically means that the URL is not recognized. In
+  /// the context of an API, it can also indicate that the endpoint is valid
+  /// but the requested resource does not exist. In some cases, servers may use
+  /// this response code instead of 403 Forbidden to hide the existence of a
+  /// resource from unauthorized clients.
   final _GetDefinedErrorPage notFound;
-  final _GetDefinedErrorPage unprocessableContent;
+
+  /// `405 Method Not Allowed`
+  ///
+  /// This error occurs when the server understands the request method used by
+  /// the client, but the requested method is not supported for the target
+  /// resource. For instance, an API may not permit the use of `DELETE` to remove
+  /// a particular resource.
+  final _GetDefinedErrorPage methodNotAllowed;
 
   const _ClientErrorPages({
     required this.badRequest,
     required this.unauthorized,
+    required this.forbidden,
     required this.notFound,
-    required this.unprocessableContent,
+    required this.methodNotAllowed,
   });
 }

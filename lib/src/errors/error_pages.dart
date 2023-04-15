@@ -14,8 +14,9 @@ abstract class ErrorPages {
   static final client = _ClientErrorPages(
     badRequest: _clientErrorPagesMap[400]!,
     unauthorized: _clientErrorPagesMap[401]!,
+    forbidden: _clientErrorPagesMap[403]!,
     notFound: _clientErrorPagesMap[404]!,
-    unprocessableContent: _clientErrorPagesMap[422]!,
+    methodNotAllowed: _clientErrorPagesMap[405]!,
   );
 
   /// Server Error Responses (500-599 status codes).

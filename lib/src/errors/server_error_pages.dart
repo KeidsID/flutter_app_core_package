@@ -15,10 +15,7 @@ final Map<int, _GetDefinedErrorPage> _serverErrorPagesMap = {
 );
 
 class _ServerErrorPages {
-  /// `400 Bad Request`
-  ///
-  /// Error caused by client request (e.g, malformed request syntax,
-  /// invalid message framing, or deceptive reqeust routing).
+  /// `500 Internal Server Error`
   final _GetDefinedErrorPage internalServerError;
 
   const _ServerErrorPages({
