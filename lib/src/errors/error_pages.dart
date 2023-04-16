@@ -30,6 +30,13 @@ abstract class ErrorPages {
     conflict: _clientErrorPagesMap[409]!,
     gone: _clientErrorPagesMap[410]!,
     lengthRequired: _clientErrorPagesMap[411]!,
+    preconditionFailed: _clientErrorPagesMap[412]!,
+    payloadTooLarge: _clientErrorPagesMap[413]!,
+    uriTooLong: _clientErrorPagesMap[414]!,
+    unsupportedMediaType: _clientErrorPagesMap[415]!,
+    rangeNotSatisfiable: _clientErrorPagesMap[416]!,
+    expectationFailed: _clientErrorPagesMap[417]!,
+    imATeapot: _clientErrorPagesMap[418]!,
   );
 
   /// Server Error Responses (500-599 status codes).

@@ -12,6 +12,13 @@ final Map<int, _GetDefinedErrorPage> _clientErrorPagesMap = {
   409: 'Conflict',
   410: 'Gone',
   411: 'Length Required',
+  412: 'Precondition Failed',
+  413: 'Payload Too Large',
+  414: 'URI Too Long',
+  415: 'Unsupported Media Type',
+  416: 'Range Not Satisfiable',
+  417: 'Expectation Failed',
+  418: "I'm a teapot"
 }.map(
   (statusCode, name) => MapEntry(
     statusCode,
@@ -75,7 +82,7 @@ class _ClientErrorPages {
 
   /// `407 Proxy Authentication Required`
   ///
-  /// This error is similar to 401 Unauthorized, but in this case,
+  /// This error is similar to `401 Unauthorized`, but in this case,
   /// authentication must be performed by a proxy.
   final _GetDefinedErrorPage proxyAuthenticationRequired;
 
@@ -104,6 +111,53 @@ class _ClientErrorPages {
   /// is required but not defined.
   final _GetDefinedErrorPage lengthRequired;
 
+  /// `412 Precondition Failed`
+  ///
+  /// The client has specified certain preconditions in its headers that the
+  /// server cannot fulfill.
+  final _GetDefinedErrorPage preconditionFailed;
+
+  /// `413 Payload Too Large`
+  ///
+  /// Request entity is larger than limits defined by server.
+  final _GetDefinedErrorPage payloadTooLarge;
+
+  /// `414 URI Too Long`
+  ///
+  /// The URI requested by the client is longer than the server is willing to
+  /// interpret.
+  final _GetDefinedErrorPage uriTooLong;
+
+  /// `415 Unsupported Media Type`
+  ///
+  /// The server is rejecting the request because the requested data is in a
+  /// media format that is not supported.
+  final _GetDefinedErrorPage unsupportedMediaType;
+
+  /// `416 Range Not Satisfiable`
+  ///
+  /// The request cannot fulfill the range specified by the `Range` header
+  /// field, which may be due to it being outside the size of the target
+  /// URI's data.
+  final _GetDefinedErrorPage rangeNotSatisfiable;
+
+  /// `417 Expectation Failed`
+  ///
+  /// This response code means the expectation indicated by the `Expect`
+  /// request header field cannot be met by the server.
+  final _GetDefinedErrorPage expectationFailed;
+
+  /// `418 I'm a teapot`
+  ///
+  /// The server refuses to brew coffee because it is permanently a teapot. If
+  /// a combined coffee/tea pot is temporarily out of coffee, it should return
+  /// a 503 error instead. This error is a reference to the Hyper Text Coffee
+  /// Pot Control Protocol, which is a tongue-in-cheek protocol created as an
+  /// April Fools' joke in both 1998 and 2014. The protocol is not meant to be
+  /// taken seriously but is instead a humorous nod to the limitations of
+  /// technology and the absurdity of some error messages.
+  final _GetDefinedErrorPage imATeapot;
+
   const _ClientErrorPages({
     required this.badRequest,
     required this.unauthorized,
@@ -116,5 +170,12 @@ class _ClientErrorPages {
     required this.conflict,
     required this.gone,
     required this.lengthRequired,
+    required this.preconditionFailed,
+    required this.payloadTooLarge,
+    required this.uriTooLong,
+    required this.unsupportedMediaType,
+    required this.rangeNotSatisfiable,
+    required this.expectationFailed,
+    required this.imATeapot,
   });
 }

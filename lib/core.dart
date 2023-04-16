@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'src/utils/data.dart' as data;
 
+export 'src/errors/error_pages.dart';
 export 'src/utils/data.dart';
 export 'src/utils/extensions.dart';
 
