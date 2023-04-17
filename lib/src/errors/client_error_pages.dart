@@ -18,7 +18,7 @@ final Map<int, _GetDefinedErrorPage> _clientErrorPagesMap = {
   415: 'Unsupported Media Type',
   416: 'Range Not Satisfiable',
   417: 'Expectation Failed',
-  418: "I'm a teapot"
+  418: "I'm a teapot",
 }.map(
   (statusCode, name) => MapEntry(
     statusCode,

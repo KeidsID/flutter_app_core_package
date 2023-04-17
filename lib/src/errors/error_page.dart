@@ -43,7 +43,7 @@ class ErrorPage extends StatelessWidget {
             Text(name, style: context.textTheme.headline4),
             const Divider(),
             Text(
-              message ?? 'Sorry for the inconvenience.',
+              '${message ?? 'Sorry for the inconvenience'}.',
               textAlign: TextAlign.center,
               style: context.textTheme.headline6,
             ),

@@ -7,40 +7,34 @@ void main() {
   const defaultAppName = 'App Name';
   const defaultAppPrimaryColor = Colors.blue;
 
-  group('On Default Init:', () {
+  group('By default, init()', () {
     setUpAll(() => core.init());
 
-    test('Expected Data value', () {
+    test('returns the expected value for the app data', () {
       expect(core.appName, defaultAppName);
       expect(core.appPrimaryColor, defaultAppPrimaryColor);
       expect(core.appSecondaryColor, null);
     });
 
-    test('Expected ThemeData value', () {
+    test('returns the expected value for the app themes', () {
       expect(core.AppThemes.light!.brightness, Brightness.light);
       expect(core.AppThemes.light!.useMaterial3, false);
       expect(
         core.AppThemes.light!.colorScheme,
-        ColorScheme.fromSeed(
-          seedColor: defaultAppPrimaryColor,
-          brightness: Brightness.light,
-        ),
+        getColorScheme(defaultAppPrimaryColor, Brightness.light),
       );
 
       expect(core.AppThemes.dark!.brightness, Brightness.dark);
       expect(core.AppThemes.dark!.useMaterial3, false);
       expect(
         core.AppThemes.dark!.colorScheme,
-        ColorScheme.fromSeed(
-          seedColor: defaultAppPrimaryColor,
-          brightness: Brightness.dark,
-        ),
+        getColorScheme(defaultAppPrimaryColor, Brightness.dark),
       );
     });
   });
 
-  group('On Custom Init:', () {
-    group('init(appName, appPrimaryColor):', () {
+  group('The custom', () {
+    group('init(appName, appPrimaryColor)', () {
       const userAppName = 'Flutter Demo';
       const userAppPrimaryColor = Colors.purple;
 
@@ -51,36 +45,30 @@ void main() {
         );
       });
 
-      test('Expected Data value', () {
+      test('returns the expected value for the app data', () {
         expect(core.appName, userAppName);
         expect(core.appPrimaryColor, userAppPrimaryColor);
         expect(core.appSecondaryColor, null);
       });
 
-      test('Expected ThemeData value', () {
+      test('returns the expected value for the app themes', () {
         expect(core.AppThemes.light!.brightness, Brightness.light);
         expect(core.AppThemes.light!.useMaterial3, false);
         expect(
           core.AppThemes.light!.colorScheme,
-          ColorScheme.fromSeed(
-            seedColor: userAppPrimaryColor,
-            brightness: Brightness.light,
-          ),
+          getColorScheme(userAppPrimaryColor, Brightness.light),
         );
 
         expect(core.AppThemes.dark!.brightness, Brightness.dark);
         expect(core.AppThemes.dark!.useMaterial3, false);
         expect(
           core.AppThemes.dark!.colorScheme,
-          ColorScheme.fromSeed(
-            seedColor: userAppPrimaryColor,
-            brightness: Brightness.dark,
-          ),
+          getColorScheme(userAppPrimaryColor, Brightness.dark),
         );
       });
     });
 
-    group('init(appSecondaryColor, appTextTheme):', () {
+    group('init(appSecondaryColor, appTextTheme)', () {
       const userAppSecondaryColor = Colors.purple;
       const userAppTextTheme = TextTheme(
         headline1: TextStyle(fontWeight: FontWeight.w300),
@@ -93,67 +81,59 @@ void main() {
         );
       });
 
-      test('Expected Data value', () {
+      test('returns the expected value for the app data', () {
         expect(core.appName, defaultAppName);
         expect(core.appPrimaryColor, defaultAppPrimaryColor);
         expect(core.appSecondaryColor, userAppSecondaryColor);
       });
 
-      test('Expected ThemeData value', () {
+      test('returns the expected value for the app themes', () {
         expect(core.AppThemes.light!.brightness, Brightness.light);
         expect(core.AppThemes.light!.useMaterial3, false);
         expect(
           core.AppThemes.light!.colorScheme,
-          ColorScheme.fromSeed(
-            seedColor: defaultAppPrimaryColor,
-            brightness: Brightness.light,
-          ),
+          getColorScheme(defaultAppPrimaryColor, Brightness.light),
         );
 
         expect(core.AppThemes.dark!.brightness, Brightness.dark);
         expect(core.AppThemes.dark!.useMaterial3, false);
         expect(
           core.AppThemes.dark!.colorScheme,
-          ColorScheme.fromSeed(
-            seedColor: defaultAppPrimaryColor,
-            brightness: Brightness.dark,
-          ),
+          getColorScheme(defaultAppPrimaryColor, Brightness.dark),
         );
       });
     });
 
-    group('init(useMaterial3: true):', () {
+    group('init(useMaterial3: true)', () {
       const isMaterial3 = true;
 
       setUpAll(() => core.init(useMaterial3: isMaterial3));
 
-      test('Expected Data value', () {
+      test('returns the expected value for the app data', () {
         expect(core.appName, defaultAppName);
         expect(core.appPrimaryColor, defaultAppPrimaryColor);
         expect(core.appSecondaryColor, null);
       });
 
-      test('Expected ThemeData value', () {
+      test('returns the expected value for the app themes', () {
         expect(core.AppThemes.light!.brightness, Brightness.light);
         expect(core.AppThemes.light!.useMaterial3, isMaterial3);
         expect(
           core.AppThemes.light!.colorScheme,
-          ColorScheme.fromSeed(
-            seedColor: defaultAppPrimaryColor,
-            brightness: Brightness.light,
-          ),
+          getColorScheme(defaultAppPrimaryColor, Brightness.light),
         );
 
         expect(core.AppThemes.dark!.brightness, Brightness.dark);
         expect(core.AppThemes.dark!.useMaterial3, isMaterial3);
         expect(
           core.AppThemes.dark!.colorScheme,
-          ColorScheme.fromSeed(
-            seedColor: defaultAppPrimaryColor,
-            brightness: Brightness.dark,
-          ),
+          getColorScheme(defaultAppPrimaryColor, Brightness.dark),
         );
       });
     });
   });
+}
+
+ColorScheme getColorScheme(Color color, Brightness brightness) {
+  return ColorScheme.fromSeed(seedColor: color, brightness: brightness);
 }
