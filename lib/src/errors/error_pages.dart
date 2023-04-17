@@ -37,6 +37,15 @@ abstract class ErrorPages {
     rangeNotSatisfiable: _clientErrorPagesMap[416]!,
     expectationFailed: _clientErrorPagesMap[417]!,
     imATeapot: _clientErrorPagesMap[418]!,
+    misdirectedRequest: _clientErrorPagesMap[421]!,
+    unprocessableContent: _clientErrorPagesMap[422]!,
+    locked: _clientErrorPagesMap[423]!,
+    failedDependency: _clientErrorPagesMap[424]!,
+    upgradeRequired: _clientErrorPagesMap[426]!,
+    preconditionRequired: _clientErrorPagesMap[428]!,
+    tooManyRequest: _clientErrorPagesMap[429]!,
+    requestHeaderFieldsTooLarge: _clientErrorPagesMap[431]!,
+    unavailableForLegalReasons: _clientErrorPagesMap[451]!,
   );
 
   /// Server Error Responses (500-599 status codes).

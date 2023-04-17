@@ -19,6 +19,15 @@ final Map<int, _GetDefinedErrorPage> _clientErrorPagesMap = {
   416: 'Range Not Satisfiable',
   417: 'Expectation Failed',
   418: "I'm a teapot",
+  421: "Misdirected Request",
+  422: "Unprocessable Content",
+  423: "Locked",
+  424: "Failed Dependency",
+  426: "Upgrade Required",
+  428: "Precondition Required",
+  429: "Too Many Requests",
+  431: "Request Header Fields Too Large",
+  451: "Unavailable For Legal Reasons",
 }.map(
   (statusCode, name) => MapEntry(
     statusCode,
@@ -158,6 +167,62 @@ class _ClientErrorPages {
   /// technology and the absurdity of some error messages.
   final _GetDefinedErrorPage imATeapot;
 
+  /// `421 Misdirected Request`
+  ///
+  /// The server couldn't respond, possibly due to reused connection or
+  /// unavailable service.
+  final _GetDefinedErrorPage misdirectedRequest;
+
+  /// `422 Unprocessable Content`
+  ///
+  /// The request was well-formed but was unable to be followed due to semantic
+  /// errors.
+  final _GetDefinedErrorPage unprocessableContent;
+
+  /// `423 Locked`
+  ///
+  /// The resource that is being accessed is locked.
+  final _GetDefinedErrorPage locked;
+
+  /// `424 Failed Dependency`
+  ///
+  /// The request failed due to failure of a previous request.
+  final _GetDefinedErrorPage failedDependency;
+
+  /// `426 Upgrade Required`
+  ///
+  /// The server won't process the request with the current protocol, but may do
+  /// so if the client switches to a different protocol. A 426 response is sent
+  /// by the server, along with an `Upgrade` header, to indicate the required
+  /// protocol(s).
+  final _GetDefinedErrorPage upgradeRequired;
+
+  /// `428 Precondition Required`
+  ///
+  /// The server needs a conditional request, which usually means that a
+  /// required precondition header, such as `If-Match`, is missing.
+  final _GetDefinedErrorPage preconditionRequired;
+
+  /// `429 Too Many Requests`
+  ///
+  /// The user has exceeded the number of allowed requests within a specific
+  /// time frame (known as "rate limiting"). The response may include a
+  /// `Retry-After` header that specifies how long to wait before sending a new
+  /// request.
+  final _GetDefinedErrorPage tooManyRequest;
+
+  /// `431 Request Header Fields Too Large`
+  ///
+  /// The server is unwilling to process the request because its header fields
+  /// are too large.
+  final _GetDefinedErrorPage requestHeaderFieldsTooLarge;
+
+  /// `451 Unavailable For Legal Reasons`
+  ///
+  /// The user agent requested a resource that cannot legally be provided, such
+  /// as a web page censored by a government.
+  final _GetDefinedErrorPage unavailableForLegalReasons;
+
   const _ClientErrorPages({
     required this.badRequest,
     required this.unauthorized,
@@ -177,5 +242,14 @@ class _ClientErrorPages {
     required this.rangeNotSatisfiable,
     required this.expectationFailed,
     required this.imATeapot,
+    required this.misdirectedRequest,
+    required this.unprocessableContent,
+    required this.locked,
+    required this.failedDependency,
+    required this.upgradeRequired,
+    required this.preconditionRequired,
+    required this.tooManyRequest,
+    required this.requestHeaderFieldsTooLarge,
+    required this.unavailableForLegalReasons,
   });
 }

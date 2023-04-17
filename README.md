@@ -11,6 +11,8 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
+![CI status](https://api.codemagic.io/apps/643d42ab38ef8225c156a310/643d42ab38ef8225c156a30f/status_badge.svg)
+
 A package that provide basic utils like Themes, common BuildContext extension and Error Handler Pages.
 
 Great for creating lots of flutter apps as a portfolio.
@@ -65,10 +67,10 @@ class MyWidget extends StatelessWidget {
 
 ## Getting started
 
-Add the package to your depedencies
+Add the package to your dependencies
 
 ```yaml
-depedencies:
+dependencies:
   core:
     git:
       url: https://github.com/KeidsID/flutter_app_core_package.git
