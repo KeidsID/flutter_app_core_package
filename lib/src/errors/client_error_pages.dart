@@ -31,12 +31,18 @@ final Map<int, _GetDefinedErrorPage> _clientErrorPagesMap = {
 }.map(
   (statusCode, name) => MapEntry(
     statusCode,
-    ({Key? key, String? message}) => ErrorPage(
-      key: key,
-      statusCode: statusCode,
-      name: name,
-      message: message,
-    ),
+    ({Key? key, String? message}) {
+      if (message == null) {
+        return ErrorPage(key: key, statusCode: statusCode, name: name);
+      }
+
+      return ErrorPage(
+        key: key,
+        statusCode: statusCode,
+        name: name,
+        message: message,
+      );
+    },
   ),
 );
 
