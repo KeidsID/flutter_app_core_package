@@ -1,6 +1,6 @@
 name: core
 description: A package that provide basic utils like Themes and Error Handler Widget.
-version: 1.0.0
+version: 1.1.0
 homepage:
 publish_to: "none"
 
