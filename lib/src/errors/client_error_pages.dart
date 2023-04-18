@@ -82,7 +82,7 @@ class _ClientErrorPages {
   /// a particular resource.
   final _GetDefinedErrorPage methodNotAllowed;
 
-  /// '406 Not Acceptable`
+  /// `406 Not Acceptable`
   ///
   /// This response is sent by the server when it cannot find any content that
   /// matches the criteria specified by the user agent, even after performing

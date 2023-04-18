@@ -163,7 +163,7 @@ void main() {
 
       test('.tooManyRequest() $testDescTemplate', () {
         expect(ErrorPages.client.tooManyRequest().statusCode, 429);
-        expect(ErrorPages.client.tooManyRequest().name, 'Too Many Request');
+        expect(ErrorPages.client.tooManyRequest().name, 'Too Many Requests');
       });
 
       test('.requestHeaderFieldsTooLarge() $testDescTemplate', () {

@@ -19,16 +19,14 @@ void main() {
     test('returns the expected value for the app themes', () {
       expect(core.AppThemes.light!.brightness, Brightness.light);
       expect(core.AppThemes.light!.useMaterial3, false);
-      expect(
-        core.AppThemes.light!.colorScheme,
-        getColorScheme(defaultAppPrimaryColor, Brightness.light),
-      );
+      expect(core.AppThemes.light!.colorScheme,
+          getColorScheme(defaultAppPrimaryColor));
 
       expect(core.AppThemes.dark!.brightness, Brightness.dark);
       expect(core.AppThemes.dark!.useMaterial3, false);
       expect(
         core.AppThemes.dark!.colorScheme,
-        getColorScheme(defaultAppPrimaryColor, Brightness.dark),
+        getDarkColorScheme(defaultAppPrimaryColor),
       );
     });
   });
@@ -56,14 +54,14 @@ void main() {
         expect(core.AppThemes.light!.useMaterial3, false);
         expect(
           core.AppThemes.light!.colorScheme,
-          getColorScheme(userAppPrimaryColor, Brightness.light),
+          getColorScheme(userAppPrimaryColor),
         );
 
         expect(core.AppThemes.dark!.brightness, Brightness.dark);
         expect(core.AppThemes.dark!.useMaterial3, false);
         expect(
           core.AppThemes.dark!.colorScheme,
-          getColorScheme(userAppPrimaryColor, Brightness.dark),
+          getDarkColorScheme(userAppPrimaryColor),
         );
       });
     });
@@ -92,14 +90,14 @@ void main() {
         expect(core.AppThemes.light!.useMaterial3, false);
         expect(
           core.AppThemes.light!.colorScheme,
-          getColorScheme(defaultAppPrimaryColor, Brightness.light),
+          getColorScheme(defaultAppPrimaryColor),
         );
 
         expect(core.AppThemes.dark!.brightness, Brightness.dark);
         expect(core.AppThemes.dark!.useMaterial3, false);
         expect(
           core.AppThemes.dark!.colorScheme,
-          getColorScheme(defaultAppPrimaryColor, Brightness.dark),
+          getDarkColorScheme(defaultAppPrimaryColor),
         );
       });
     });
@@ -120,20 +118,27 @@ void main() {
         expect(core.AppThemes.light!.useMaterial3, isMaterial3);
         expect(
           core.AppThemes.light!.colorScheme,
-          getColorScheme(defaultAppPrimaryColor, Brightness.light),
+          getColorScheme(defaultAppPrimaryColor),
         );
 
         expect(core.AppThemes.dark!.brightness, Brightness.dark);
         expect(core.AppThemes.dark!.useMaterial3, isMaterial3);
         expect(
           core.AppThemes.dark!.colorScheme,
-          getColorScheme(defaultAppPrimaryColor, Brightness.dark),
+          getDarkColorScheme(defaultAppPrimaryColor),
         );
       });
     });
   });
 }
 
-ColorScheme getColorScheme(Color color, Brightness brightness) {
-  return ColorScheme.fromSeed(seedColor: color, brightness: brightness);
+ColorScheme getColorScheme(Color color) {
+  return ColorScheme.fromSeed(seedColor: color);
+}
+
+ColorScheme getDarkColorScheme(Color color) {
+  return ColorScheme.fromSeed(
+    seedColor: color,
+    brightness: Brightness.dark,
+  );
 }

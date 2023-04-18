@@ -58,6 +58,16 @@ abstract class ErrorPages {
   /// ```
   static final server = _ServerErrorPages(
     internalServerError: _serverErrorPagesMap[500]!,
+    notImplemented: _serverErrorPagesMap[501]!,
+    badGateway: _serverErrorPagesMap[502]!,
+    serviceUnavailable: _serverErrorPagesMap[503]!,
+    gatewayTimeout: _serverErrorPagesMap[504]!,
+    httpVersionNotSupported: _serverErrorPagesMap[505]!,
+    variantAlsoNegotiates: _serverErrorPagesMap[506]!,
+    insufficientStorage: _serverErrorPagesMap[507]!,
+    loopDetected: _serverErrorPagesMap[508]!,
+    notExtended: _serverErrorPagesMap[510]!,
+    networkAuthenticationRequired: _serverErrorPagesMap[511]!,
   );
 
   /// Get an ErrorPage based on the provided statusCode. If the statusCode is
