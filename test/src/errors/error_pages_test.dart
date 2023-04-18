@@ -5,13 +5,13 @@ import 'package:core/src/errors/error_pages.dart';
 
 void main() {
   group('ErrorPages', () {
-    test('.getByCode() - A valid status code will return an ErrorPage', () {
-      expect(ErrorPages.getByCode(400), isA<ErrorPage>());
-      expect(ErrorPages.getByCode(500), isA<ErrorPage>());
+    test('.byCode() - A valid status code will return an ErrorPage', () {
+      expect(ErrorPages.byCode(400), isA<ErrorPage>());
+      expect(ErrorPages.byCode(500), isA<ErrorPage>());
     });
 
-    test('.getByCode() - An invalid status code will throw a RangeError', () {
-      expect(() => ErrorPages.getByCode(999), throwsA(isA<RangeError>()));
+    test('.byCode() - An invalid status code will throw a RangeError', () {
+      expect(() => ErrorPages.byCode(999), throwsA(isA<RangeError>()));
     });
 
     group('.client', () {

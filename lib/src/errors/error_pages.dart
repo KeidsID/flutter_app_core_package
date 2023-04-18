@@ -72,7 +72,7 @@ abstract class ErrorPages {
 
   /// Get an ErrorPage based on the provided statusCode. If the statusCode is
   /// not found, an [RangeError] will be thrown.
-  static ErrorPage getByCode(int statusCode, {Key? key, String? message}) {
+  static ErrorPage byCode(int statusCode, {Key? key, String? message}) {
     final errorPagesMap = _clientErrorPagesMap..addAll(_serverErrorPagesMap);
 
     if (errorPagesMap[statusCode] == null) {
