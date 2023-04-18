@@ -83,21 +83,20 @@ Great for creating lots of flutter apps as a portfolio.
   //
   // The Example below will display status code 404 with
   // 'Not Found' text below it.
-  ErrorPages.getByCode(404);
+  ErrorPages.byCode(404);
 
   // You can also add custom message to the page
   // (Default message is 'Sorry for the inconvenience').
   //
   // The message displayed below statusCode and name.
   ErrorPages.client.notFound(message: 'The Page You Requested Not Found');
-  ErrorPages.getByCode(403, message: 'You are not allowed to access this');
+  ErrorPages.byCode(403, message: 'You are not allowed to access this');
 
   // See preview below for page visual.
   ```
 
   ### ErrorPages previews:
 
-  ![ErrorPages preview (500 - Internal Server Error)](readme_assets/error_pages_preview/500.png)
   ![ErrorPages preview (403 -  Forbidden)](readme_assets/error_pages_preview/403.png)
 
 ## Getting started
