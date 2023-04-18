@@ -6,7 +6,7 @@ import 'error_pages.dart';
 class ErrorPage extends StatelessWidget {
   final int statusCode;
   final String name;
-  final String? message;
+  final String message;
 
   /// Page to display errors info.
   ///
@@ -29,7 +29,7 @@ class ErrorPage extends StatelessWidget {
     super.key,
     required this.statusCode,
     required this.name,
-    this.message,
+    this.message = 'Sorry for the inconvenience',
   });
 
   @override
@@ -43,7 +43,7 @@ class ErrorPage extends StatelessWidget {
             Text(name, style: context.textTheme.headline4),
             const Divider(),
             Text(
-              '${message ?? 'Sorry for the inconvenience'}.',
+              message,
               textAlign: TextAlign.center,
               style: context.textTheme.headline6,
             ),

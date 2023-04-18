@@ -22,6 +22,6 @@ void main() {
 
     expect(find.text(name), findsOneWidget);
 
-    expect(find.text('$message.'), findsOneWidget);
+    expect(find.text(message), findsOneWidget);
   });
 }
