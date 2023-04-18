@@ -36,18 +36,23 @@ class ErrorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('$statusCode', style: context.textTheme.headline3),
-            Text(name, style: context.textTheme.headline4),
-            const Divider(),
-            Text(
-              message,
-              textAlign: TextAlign.center,
-              style: context.textTheme.headline6,
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('$statusCode', style: context.textTheme.headline3),
+              Text(name, style: context.textTheme.headline4),
+              const Divider(),
+              Text(
+                message,
+                textAlign: TextAlign.center,
+                style: context.textTheme.headline6,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
         ),
       ),
     );
