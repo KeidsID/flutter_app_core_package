@@ -1,45 +1,159 @@
-part of 'error_pages.dart';
+part of 'http_error_pages.dart';
 
-final Map<int, _GetDefinedErrorPage> _clientErrorPagesMap = {
-  400: 'Bad Request',
-  401: 'Unauthorized',
-  403: 'Forbidden',
-  404: 'Not Found',
-  405: 'Method Not Allowed',
-  406: 'Not Acceptable',
-  407: 'Proxy Authentication Required',
-  408: 'Request Timeout',
-  409: 'Conflict',
-  410: 'Gone',
-  411: 'Length Required',
-  412: 'Precondition Failed',
-  413: 'Payload Too Large',
-  414: 'URI Too Long',
-  415: 'Unsupported Media Type',
-  416: 'Range Not Satisfiable',
-  417: 'Expectation Failed',
-  418: "I'm a teapot",
-  421: "Misdirected Request",
-  422: "Unprocessable Content",
-  423: "Locked",
-  424: "Failed Dependency",
-  426: "Upgrade Required",
-  428: "Precondition Required",
-  429: "Too Many Requests",
-  431: "Request Header Fields Too Large",
-  451: "Unavailable For Legal Reasons",
+final Map<int, _GetDefinedErrorPage> _clientErrorsMap =
+    <int, HttpResponseException>{
+  400: HttpResponseException(
+    400,
+    'Bad Request',
+    message: '',
+  ),
+  401: HttpResponseException(
+    401,
+    'Unauthorized',
+    message: '',
+  ),
+  403: HttpResponseException(
+    403,
+    'Forbidden',
+    message: '',
+  ),
+  404: HttpResponseException(
+    404,
+    'Not Found',
+    message: '',
+  ),
+  405: HttpResponseException(
+    405,
+    'Method Not Allowed',
+    message: '',
+  ),
+  406: HttpResponseException(
+    406,
+    'Not Acceptable',
+    message: '',
+  ),
+  407: HttpResponseException(
+    407,
+    'Proxy Authentication Required',
+    message: '',
+  ),
+  408: HttpResponseException(
+    408,
+    'Request Timeout',
+    message: '',
+  ),
+  409: HttpResponseException(
+    409,
+    'Conflict',
+    message: '',
+  ),
+  410: HttpResponseException(
+    410,
+    'Gone',
+    message: '',
+  ),
+  411: HttpResponseException(
+    411,
+    'Length Required',
+    message: '',
+  ),
+  412: HttpResponseException(
+    412,
+    'Precondition Failed',
+    message: '',
+  ),
+  413: HttpResponseException(
+    413,
+    'Payload Too Large',
+    message: '',
+  ),
+  414: HttpResponseException(
+    414,
+    'URI Too Long',
+    message: '',
+  ),
+  415: HttpResponseException(
+    415,
+    'Unsupported Media Type',
+    message: '',
+  ),
+  416: HttpResponseException(
+    416,
+    'Range Not Satisfiable',
+    message: '',
+  ),
+  417: HttpResponseException(
+    417,
+    'Expectation Failed',
+    message: '',
+  ),
+  418: HttpResponseException(
+    418,
+    "I'm a teapot",
+    message: '',
+  ),
+  421: HttpResponseException(
+    421,
+    "Misdirected Request",
+    message: '',
+  ),
+  422: HttpResponseException(
+    422,
+    "Unprocessable Content",
+    message: '',
+  ),
+  423: HttpResponseException(
+    423,
+    "Locked",
+    message: '',
+  ),
+  424: HttpResponseException(
+    424,
+    "Failed Dependency",
+    message: '',
+  ),
+  426: HttpResponseException(
+    426,
+    "Upgrade Required",
+    message: '',
+  ),
+  428: HttpResponseException(
+    428,
+    "Precondition Required",
+    message: '',
+  ),
+  429: HttpResponseException(
+    429,
+    "Too Many Requests",
+    message: '',
+  ),
+  431: HttpResponseException(
+    431,
+    "Request Header Fields Too Large",
+    message: '',
+  ),
+  451: HttpResponseException(
+    451,
+    "Unavailable For Legal Reasons",
+    message: '',
+  ),
 }.map(
-  (statusCode, name) => MapEntry(
+  (statusCode, exception) => MapEntry(
     statusCode,
     ({Key? key, String? message}) {
       if (message == null) {
-        return ErrorPage(key: key, statusCode: statusCode, name: name);
+        return HttpErrorPage(
+          key: key,
+          statusCode: statusCode,
+          name: exception.name,
+          message: exception.message,
+        );
       }
 
-      return ErrorPage(
+      return HttpErrorPage(
         key: key,
         statusCode: statusCode,
-        name: name,
+        name: exception.name,
         message: message,
       );
     },
@@ -90,9 +204,15 @@ class _ClientErrorPages {
 
   /// `406 Not Acceptable`
   ///
-  /// This response is sent by the server when it cannot find any content that
-  /// matches the criteria specified by the user agent, even after performing
-  /// server-driven content negotiation.
+  /// The server cannot produce a response matching the list of acceptable
+  /// values defined in the request's proactive **content negotiation** headers,
+  /// and that the server is unwilling to supply a default representation.
+  ///
+  /// Proactive content negotiation headers include:
+  ///
+  /// - `Accept`
+  /// - `Accept-Encoding`
+  /// - `Accept-Language`
   final _GetDefinedErrorPage notAcceptable;
 
   /// `407 Proxy Authentication Required`
@@ -134,7 +254,7 @@ class _ClientErrorPages {
 
   /// `413 Payload Too Large`
   ///
-  /// Request entity is larger than limits defined by server.
+  /// The request entity is larger than the limits defined by the server.
   final _GetDefinedErrorPage payloadTooLarge;
 
   /// `414 URI Too Long`
@@ -151,7 +271,7 @@ class _ClientErrorPages {
 
   /// `416 Range Not Satisfiable`
   ///
-  /// The request cannot fulfill the range specified by the `Range` header
+  /// The server cannot fulfill the range specified by the `Range` header
   /// field, which may be due to it being outside the size of the target
   /// URI's data.
   final _GetDefinedErrorPage rangeNotSatisfiable;
@@ -166,7 +286,9 @@ class _ClientErrorPages {
   ///
   /// The server refuses to brew coffee because it is permanently a teapot. If
   /// a combined coffee/tea pot is temporarily out of coffee, it should return
-  /// a 503 error instead. This error is a reference to the Hyper Text Coffee
+  /// a `503` error instead.
+  ///
+  /// This error is a reference to the Hyper Text Coffee
   /// Pot Control Protocol, which is a tongue-in-cheek protocol created as an
   /// April Fools' joke in both 1998 and 2014. The protocol is not meant to be
   /// taken seriously but is instead a humorous nod to the limitations of
@@ -215,7 +337,7 @@ class _ClientErrorPages {
   /// time frame (known as "rate limiting"). The response may include a
   /// `Retry-After` header that specifies how long to wait before sending a new
   /// request.
-  final _GetDefinedErrorPage tooManyRequest;
+  final _GetDefinedErrorPage tooManyRequests;
 
   /// `431 Request Header Fields Too Large`
   ///
@@ -254,7 +376,7 @@ class _ClientErrorPages {
     required this.failedDependency,
     required this.upgradeRequired,
     required this.preconditionRequired,
-    required this.tooManyRequest,
+    required this.tooManyRequests,
     required this.requestHeaderFieldsTooLarge,
     required this.unavailableForLegalReasons,
   });

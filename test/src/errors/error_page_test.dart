@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:core/src/errors/error_page.dart';
+import 'package:core/src/errors/pages/http_error_page.dart';
 
 void main() {
   testWidgets('ErrorPage renders correctly', (tester) async {
@@ -10,7 +10,7 @@ void main() {
     const message = 'Sorry for the inconvenience';
 
     const widget = MaterialApp(
-      home: ErrorPage(
+      home: HttpErrorPage(
         statusCode: statusCode,
         name: name,
         message: message,

@@ -1,183 +1,191 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:core/src/errors/error_page.dart';
-import 'package:core/src/errors/error_pages.dart';
+import 'package:core/src/errors/pages/http_error_page.dart';
+import 'package:core/src/errors/http_error_pages.dart';
 
 void main() {
   group('ErrorPages', () {
     test('.byCode() - A valid status code will return an ErrorPage', () {
-      expect(ErrorPages.byCode(400), isA<ErrorPage>());
-      expect(ErrorPages.byCode(500), isA<ErrorPage>());
+      expect(HttpErrorPages.byCode(400), isA<HttpErrorPage>());
+      expect(HttpErrorPages.byCode(500), isA<HttpErrorPage>());
     });
 
     test('.byCode() - An invalid status code will throw a RangeError', () {
-      expect(() => ErrorPages.byCode(999), throwsA(isA<RangeError>()));
+      expect(() => HttpErrorPages.byCode(999), throwsA(isA<RangeError>()));
     });
 
     group('.client', () {
       const testDescTemplate =
           '- return an ErrorPage with valid statusCode and name props.';
       test('.badRequest() $testDescTemplate', () {
-        expect(ErrorPages.client.badRequest().statusCode, 400);
-        expect(ErrorPages.client.badRequest().name, 'Bad Request');
+        expect(HttpErrorPages.client.badRequest().statusCode, 400);
+        expect(HttpErrorPages.client.badRequest().name, 'Bad Request');
       });
 
       test('.unauthorized() $testDescTemplate', () {
-        expect(ErrorPages.client.unauthorized().statusCode, 401);
-        expect(ErrorPages.client.unauthorized().name, 'Unauthorized');
+        expect(HttpErrorPages.client.unauthorized().statusCode, 401);
+        expect(HttpErrorPages.client.unauthorized().name, 'Unauthorized');
       });
 
       test('.forbidden() $testDescTemplate', () {
-        expect(ErrorPages.client.forbidden().statusCode, 403);
-        expect(ErrorPages.client.forbidden().name, 'Forbidden');
+        expect(HttpErrorPages.client.forbidden().statusCode, 403);
+        expect(HttpErrorPages.client.forbidden().name, 'Forbidden');
       });
 
       test('.notFound() $testDescTemplate', () {
-        expect(ErrorPages.client.notFound().statusCode, 404);
-        expect(ErrorPages.client.notFound().name, 'Not Found');
+        expect(HttpErrorPages.client.notFound().statusCode, 404);
+        expect(HttpErrorPages.client.notFound().name, 'Not Found');
       });
 
       test('.methodNotAllowed() $testDescTemplate', () {
-        expect(ErrorPages.client.methodNotAllowed().statusCode, 405);
-        expect(ErrorPages.client.methodNotAllowed().name, 'Method Not Allowed');
+        expect(HttpErrorPages.client.methodNotAllowed().statusCode, 405);
+        expect(HttpErrorPages.client.methodNotAllowed().name,
+            'Method Not Allowed');
       });
 
       test('.notAcceptable() $testDescTemplate', () {
-        expect(ErrorPages.client.notAcceptable().statusCode, 406);
-        expect(ErrorPages.client.notAcceptable().name, 'Not Acceptable');
+        expect(HttpErrorPages.client.notAcceptable().statusCode, 406);
+        expect(HttpErrorPages.client.notAcceptable().name, 'Not Acceptable');
       });
 
       test('.proxyAuthenticationRequired() $testDescTemplate', () {
-        expect(ErrorPages.client.proxyAuthenticationRequired().statusCode, 407);
+        expect(HttpErrorPages.client.proxyAuthenticationRequired().statusCode,
+            407);
         expect(
-          ErrorPages.client.proxyAuthenticationRequired().name,
+          HttpErrorPages.client.proxyAuthenticationRequired().name,
           'Proxy Authentication Required',
         );
       });
 
       test('.requestTimeout() $testDescTemplate', () {
-        expect(ErrorPages.client.requestTimeout().statusCode, 408);
-        expect(ErrorPages.client.requestTimeout().name, 'Request Timeout');
+        expect(HttpErrorPages.client.requestTimeout().statusCode, 408);
+        expect(HttpErrorPages.client.requestTimeout().name, 'Request Timeout');
       });
 
       test('.conflict() $testDescTemplate', () {
-        expect(ErrorPages.client.conflict().statusCode, 409);
-        expect(ErrorPages.client.conflict().name, 'Conflict');
+        expect(HttpErrorPages.client.conflict().statusCode, 409);
+        expect(HttpErrorPages.client.conflict().name, 'Conflict');
       });
 
       test('.gone() $testDescTemplate', () {
-        expect(ErrorPages.client.gone().statusCode, 410);
-        expect(ErrorPages.client.gone().name, 'Gone');
+        expect(HttpErrorPages.client.gone().statusCode, 410);
+        expect(HttpErrorPages.client.gone().name, 'Gone');
       });
 
       test('.lengthRequired() $testDescTemplate', () {
-        expect(ErrorPages.client.lengthRequired().statusCode, 411);
-        expect(ErrorPages.client.lengthRequired().name, 'Length Required');
+        expect(HttpErrorPages.client.lengthRequired().statusCode, 411);
+        expect(HttpErrorPages.client.lengthRequired().name, 'Length Required');
       });
 
       test('.preconditionFailed() $testDescTemplate', () {
-        expect(ErrorPages.client.preconditionFailed().statusCode, 412);
+        expect(HttpErrorPages.client.preconditionFailed().statusCode, 412);
         expect(
-          ErrorPages.client.preconditionFailed().name,
+          HttpErrorPages.client.preconditionFailed().name,
           'Precondition Failed',
         );
       });
 
       test('.payloadTooLarge() $testDescTemplate', () {
-        expect(ErrorPages.client.payloadTooLarge().statusCode, 413);
-        expect(ErrorPages.client.payloadTooLarge().name, 'Payload Too Large');
+        expect(HttpErrorPages.client.payloadTooLarge().statusCode, 413);
+        expect(
+            HttpErrorPages.client.payloadTooLarge().name, 'Payload Too Large');
       });
 
       test('.uriTooLong() $testDescTemplate', () {
-        expect(ErrorPages.client.uriTooLong().statusCode, 414);
-        expect(ErrorPages.client.uriTooLong().name, 'URI Too Long');
+        expect(HttpErrorPages.client.uriTooLong().statusCode, 414);
+        expect(HttpErrorPages.client.uriTooLong().name, 'URI Too Long');
       });
 
       test('.unsupportedMediaType() $testDescTemplate', () {
-        expect(ErrorPages.client.unsupportedMediaType().statusCode, 415);
+        expect(HttpErrorPages.client.unsupportedMediaType().statusCode, 415);
         expect(
-          ErrorPages.client.unsupportedMediaType().name,
+          HttpErrorPages.client.unsupportedMediaType().name,
           'Unsupported Media Type',
         );
       });
 
       test('.rangeNotSatisfiable() $testDescTemplate', () {
-        expect(ErrorPages.client.rangeNotSatisfiable().statusCode, 416);
+        expect(HttpErrorPages.client.rangeNotSatisfiable().statusCode, 416);
         expect(
-          ErrorPages.client.rangeNotSatisfiable().name,
+          HttpErrorPages.client.rangeNotSatisfiable().name,
           'Range Not Satisfiable',
         );
       });
 
       test('.expectationFailed() $testDescTemplate', () {
-        expect(ErrorPages.client.expectationFailed().statusCode, 417);
+        expect(HttpErrorPages.client.expectationFailed().statusCode, 417);
         expect(
-          ErrorPages.client.expectationFailed().name,
+          HttpErrorPages.client.expectationFailed().name,
           'Expectation Failed',
         );
       });
 
       test('.imATeapot() $testDescTemplate', () {
-        expect(ErrorPages.client.imATeapot().statusCode, 418);
-        expect(ErrorPages.client.imATeapot().name, "I'm a teapot");
+        expect(HttpErrorPages.client.imATeapot().statusCode, 418);
+        expect(HttpErrorPages.client.imATeapot().name, "I'm a teapot");
       });
 
       test('.misdirectedRequest() $testDescTemplate', () {
-        expect(ErrorPages.client.misdirectedRequest().statusCode, 421);
+        expect(HttpErrorPages.client.misdirectedRequest().statusCode, 421);
         expect(
-          ErrorPages.client.misdirectedRequest().name,
+          HttpErrorPages.client.misdirectedRequest().name,
           'Misdirected Request',
         );
       });
 
       test('.unprocessableContent() $testDescTemplate', () {
-        expect(ErrorPages.client.unprocessableContent().statusCode, 422);
+        expect(HttpErrorPages.client.unprocessableContent().statusCode, 422);
         expect(
-          ErrorPages.client.unprocessableContent().name,
+          HttpErrorPages.client.unprocessableContent().name,
           'Unprocessable Content',
         );
       });
 
       test('.locked() $testDescTemplate', () {
-        expect(ErrorPages.client.locked().statusCode, 423);
-        expect(ErrorPages.client.locked().name, 'Locked');
+        expect(HttpErrorPages.client.locked().statusCode, 423);
+        expect(HttpErrorPages.client.locked().name, 'Locked');
       });
 
       test('.failedDependency() $testDescTemplate', () {
-        expect(ErrorPages.client.failedDependency().statusCode, 424);
-        expect(ErrorPages.client.failedDependency().name, 'Failed Dependency');
+        expect(HttpErrorPages.client.failedDependency().statusCode, 424);
+        expect(
+            HttpErrorPages.client.failedDependency().name, 'Failed Dependency');
       });
 
       test('.upgradeRequired() $testDescTemplate', () {
-        expect(ErrorPages.client.upgradeRequired().statusCode, 426);
-        expect(ErrorPages.client.upgradeRequired().name, 'Upgrade Required');
+        expect(HttpErrorPages.client.upgradeRequired().statusCode, 426);
+        expect(
+            HttpErrorPages.client.upgradeRequired().name, 'Upgrade Required');
       });
 
       test('.preconditionRequired() $testDescTemplate', () {
-        expect(ErrorPages.client.preconditionRequired().statusCode, 428);
+        expect(HttpErrorPages.client.preconditionRequired().statusCode, 428);
         expect(
-          ErrorPages.client.preconditionRequired().name,
+          HttpErrorPages.client.preconditionRequired().name,
           'Precondition Required',
         );
       });
 
       test('.tooManyRequest() $testDescTemplate', () {
-        expect(ErrorPages.client.tooManyRequest().statusCode, 429);
-        expect(ErrorPages.client.tooManyRequest().name, 'Too Many Requests');
+        expect(HttpErrorPages.client.tooManyRequests().statusCode, 429);
+        expect(
+            HttpErrorPages.client.tooManyRequests().name, 'Too Many Requests');
       });
 
       test('.requestHeaderFieldsTooLarge() $testDescTemplate', () {
-        expect(ErrorPages.client.requestHeaderFieldsTooLarge().statusCode, 431);
+        expect(HttpErrorPages.client.requestHeaderFieldsTooLarge().statusCode,
+            431);
         expect(
-          ErrorPages.client.requestHeaderFieldsTooLarge().name,
+          HttpErrorPages.client.requestHeaderFieldsTooLarge().name,
           'Request Header Fields Too Large',
         );
       });
 
       test('.unavailableForLegalReasons() $testDescTemplate', () {
-        expect(ErrorPages.client.unavailableForLegalReasons().statusCode, 451);
         expect(
-          ErrorPages.client.unavailableForLegalReasons().name,
+            HttpErrorPages.client.unavailableForLegalReasons().statusCode, 451);
+        expect(
+          HttpErrorPages.client.unavailableForLegalReasons().name,
           'Unavailable For Legal Reasons',
         );
       });
@@ -187,75 +195,75 @@ void main() {
       const testDescTemplate =
           '- return an ErrorPage with valid statusCode and name props.';
       test('.internalServerError() $testDescTemplate', () {
-        expect(ErrorPages.server.internalServerError().statusCode, 500);
+        expect(HttpErrorPages.server.internalServerError().statusCode, 500);
         expect(
-          ErrorPages.server.internalServerError().name,
+          HttpErrorPages.server.internalServerError().name,
           'Internal Server Error',
         );
       });
 
       test('.notImplemented() $testDescTemplate', () {
-        expect(ErrorPages.server.notImplemented().statusCode, 501);
-        expect(ErrorPages.server.notImplemented().name, 'Not Implemented');
+        expect(HttpErrorPages.server.notImplemented().statusCode, 501);
+        expect(HttpErrorPages.server.notImplemented().name, 'Not Implemented');
       });
 
       test('.badGateway() $testDescTemplate', () {
-        expect(ErrorPages.server.badGateway().statusCode, 502);
-        expect(ErrorPages.server.badGateway().name, 'Bad Gateway');
+        expect(HttpErrorPages.server.badGateway().statusCode, 502);
+        expect(HttpErrorPages.server.badGateway().name, 'Bad Gateway');
       });
 
       test('.serviceUnavailable() $testDescTemplate', () {
-        expect(ErrorPages.server.serviceUnavailable().statusCode, 503);
+        expect(HttpErrorPages.server.serviceUnavailable().statusCode, 503);
         expect(
-          ErrorPages.server.serviceUnavailable().name,
+          HttpErrorPages.server.serviceUnavailable().name,
           'Service Unavailable',
         );
       });
 
       test('.gatewayTimeout() $testDescTemplate', () {
-        expect(ErrorPages.server.gatewayTimeout().statusCode, 504);
-        expect(ErrorPages.server.gatewayTimeout().name, 'Gateway Timeout');
+        expect(HttpErrorPages.server.gatewayTimeout().statusCode, 504);
+        expect(HttpErrorPages.server.gatewayTimeout().name, 'Gateway Timeout');
       });
 
       test('.httpVersionNotSupported() $testDescTemplate', () {
-        expect(ErrorPages.server.httpVersionNotSupported().statusCode, 505);
+        expect(HttpErrorPages.server.httpVersionNotSupported().statusCode, 505);
         expect(
-          ErrorPages.server.httpVersionNotSupported().name,
+          HttpErrorPages.server.httpVersionNotSupported().name,
           'HTTP Version Not Supported',
         );
       });
 
       test('.variantAlsoNegotiates() $testDescTemplate', () {
-        expect(ErrorPages.server.variantAlsoNegotiates().statusCode, 506);
+        expect(HttpErrorPages.server.variantAlsoNegotiates().statusCode, 506);
         expect(
-          ErrorPages.server.variantAlsoNegotiates().name,
+          HttpErrorPages.server.variantAlsoNegotiates().name,
           'Variant Also Negotiates',
         );
       });
 
       test('.insufficientStorage() $testDescTemplate', () {
-        expect(ErrorPages.server.insufficientStorage().statusCode, 507);
+        expect(HttpErrorPages.server.insufficientStorage().statusCode, 507);
         expect(
-          ErrorPages.server.insufficientStorage().name,
+          HttpErrorPages.server.insufficientStorage().name,
           'Insufficient Storage',
         );
       });
 
       test('.loopDetected() $testDescTemplate', () {
-        expect(ErrorPages.server.loopDetected().statusCode, 508);
-        expect(ErrorPages.server.loopDetected().name, 'Loop Detected');
+        expect(HttpErrorPages.server.loopDetected().statusCode, 508);
+        expect(HttpErrorPages.server.loopDetected().name, 'Loop Detected');
       });
 
       test('.notExtended() $testDescTemplate', () {
-        expect(ErrorPages.server.notExtended().statusCode, 510);
-        expect(ErrorPages.server.notExtended().name, 'Not Extended');
+        expect(HttpErrorPages.server.notExtended().statusCode, 510);
+        expect(HttpErrorPages.server.notExtended().name, 'Not Extended');
       });
 
       test('.networkAuthenticationRequired() $testDescTemplate', () {
+        expect(HttpErrorPages.server.networkAuthenticationRequired().statusCode,
+            511);
         expect(
-            ErrorPages.server.networkAuthenticationRequired().statusCode, 511);
-        expect(
-          ErrorPages.server.networkAuthenticationRequired().name,
+          HttpErrorPages.server.networkAuthenticationRequired().name,
           'Network Authentication Required',
         );
       });

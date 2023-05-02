@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../utils/extensions.dart';
-import 'error_pages.dart';
+import '../../utils/extensions.dart';
+import '../http_error_pages.dart';
 
-class ErrorPage extends StatelessWidget {
+@Deprecated('Deprecated in 1.2.0. Use HttpErrorPage instead')
+typedef ErrorPage = HttpErrorPage;
+
+class HttpErrorPage extends StatelessWidget {
   final int statusCode;
   final String name;
-  final String message;
+  final String? message;
 
   /// Page to display errors info.
   ///
@@ -23,13 +26,12 @@ class ErrorPage extends StatelessWidget {
   /// ```
   ///
   /// Use this method exclusively to create a custom error page. If you require
-  /// pre-defined error pages, please refer to [ErrorPages]
-  /// located at `src/errors/error_pages.dart`.
-  const ErrorPage({
+  /// pre-defined error pages, please refer to [HttpErrorPages].
+  const HttpErrorPage({
     super.key,
     required this.statusCode,
     required this.name,
-    this.message = 'Sorry for the inconvenience',
+    this.message,
   });
 
   @override
@@ -45,7 +47,7 @@ class ErrorPage extends StatelessWidget {
               Text(name, style: context.textTheme.headline4),
               const Divider(),
               Text(
-                message,
+                message ?? '',
                 textAlign: TextAlign.center,
                 style: context.textTheme.headline6,
                 maxLines: 2,

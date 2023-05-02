@@ -1,6 +1,6 @@
-part of 'error_pages.dart';
+part of 'http_error_pages.dart';
 
-final Map<int, _GetDefinedErrorPage> _serverErrorPagesMap = {
+final Map<int, _GetDefinedErrorPage> _serverErrorsMap = {
   500: 'Internal Server Error',
   501: 'Not Implemented',
   502: 'Bad Gateway',
@@ -17,10 +17,10 @@ final Map<int, _GetDefinedErrorPage> _serverErrorPagesMap = {
     statusCode,
     ({Key? key, String? message}) {
       if (message == null) {
-        return ErrorPage(key: key, statusCode: statusCode, name: name);
+        return HttpErrorPage(key: key, statusCode: statusCode, name: name);
       }
 
-      return ErrorPage(
+      return HttpErrorPage(
         key: key,
         statusCode: statusCode,
         name: name,
