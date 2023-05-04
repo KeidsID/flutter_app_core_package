@@ -1,0 +1,166 @@
+{
+  "@@locale": "en",
+  "statusCodeSemantic": "Status Code {code}",
+  "@statusCodeSemantic": {
+    "description": "Semantic label for status code [Text] on [HttpErrorPage].",
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "@_HTTP_CLIENT_ERROR": {},
+  "badRequestMessage": "Error due to invalid request",
+  "@badRequestMessage": {
+    "description": "Default message for `400 (Bad Request)` HTTP client error response."
+  },
+  "unauthorizedMessage": "Authentications is required",
+  "@unauthorizedMessage": {
+    "description": "Default message for `401 (Unauthorized)` HTTP client error response."
+  },
+  "forbiddenMessage": "Not allowed to be accessed",
+  "@forbiddenMessage": {
+    "description": "Default message for `403 (Forbidden)` HTTP client error response."
+  },
+  "notFoundMessage": "The requested resource was not found",
+  "@notFoundMessage": {
+    "description": "Default message for `404 (Not Found)` HTTP client error response."
+  },
+  "methodNotAllowedMessage": "The requested method is not supported",
+  "@methodNotAllowedMessage": {
+    "description": "Default message for `405 (Method Not Allowed)` HTTP client error response."
+  },
+  "notAcceptableMessage": "The content negotiation headers are invalid",
+  "@notAcceptableMessage": {
+    "description": "Default message for `406 (Not Acceptable)` HTTP client error response."
+  },
+  "proxyAuthenticationRequiredMessage": "Proxy authentication is required",
+  "@proxyAuthenticationRequiredMessage": {
+    "description": "Default message for `407 (Proxy Authentication Required)` HTTP client error response."
+  },
+  "requestTimeoutMessage": "The process is taking too long to handle",
+  "@requestTimeoutMessage": {
+    "description": "Default message for `408 (Request Timeout)` HTTP client error response."
+  },
+  "conflictMessage": "There was a conflict in the server's state",
+  "@conflictMessage": {
+    "description": "Default message for `409 (Conflict)` HTTP client error response."
+  },
+  "goneMessage": "The requested resource has been deleted",
+  "@goneMessage": {
+    "description": "Default message for `410 (Gone)` HTTP client error response."
+  },
+  "lengthRequiredMessage": "`Content-Length` header field is required",
+  "@lengthRequiredMessage": {
+    "description": "Default message for `411 (Length Required)` HTTP client error response."
+  },
+  "preconditionFailedMessage": "The server cannot handle the precondition of your request",
+  "@preconditionFailedMessage": {
+    "description": "Default message for `412 (Precondition Failed)` HTTP client error response."
+  },
+  "payloadTooLargeMessage": "Your request is too large to handle",
+  "@payloadTooLargeMessage": {
+    "description": "Default message for `413 (Payload Too Large)` HTTP client error response."
+  },
+  "uriTooLongMessage": "The requested URI is longer than the server is willing to interpret",
+  "@uriTooLongMessage": {
+    "description": "Default message for `414 (URI Too Long)` HTTP client error response."
+  },
+  "unsupportedMediaTypeMessage": "The media format you provided is not supported",
+  "@unsupportedMediaTypeMessage": {
+    "description": "Default message for `415 (Unsupported Media Type)` HTTP client error response."
+  },
+  "rangeNotSatisfiableMessage": "The server cannot fulfill the range specified by the `Range` header field",
+  "@rangeNotSatisfiableMessage": {
+    "description": "Default message for `416 (Range Not Satisfiable)` HTTP client error response."
+  },
+  "expectationFailedMessage": "The server cannot fulfill the expectation indicated by the `Expect` header field",
+  "@expectationFailedMessage": {
+    "description": "Default message for `417 (Expectation Failed)` HTTP client error response."
+  },
+  "imATeapotMessage": "The server refuses the attempt to brew coffee with a teapot",
+  "@imATeapotMessage": {
+    "description": "Default message for `418 (I'm a teapot)` HTTP client error response."
+  },
+  "misdirectedRequestMessage": "Your request was directed at the wrong server",
+  "@misdirectedRequestMessage": {
+    "description": "Default message for `421 (Misdirected Request)` HTTP client error response."
+  },
+  "unprocessableContentMessage": "Could not be handled because of a semantic error",
+  "@unprocessableContentMessage": {
+    "description": "Default message for `422 (Unprocessable Content)` HTTP client error response."
+  },
+  "lockedMessage": "The resource is forbidden to access",
+  "@lockedMessage": {
+    "description": "Default message for `423 (Locked)` HTTP client error response."
+  },
+  "failedDependencyMessage": "Error due a failure of a previous request",
+  "@failedDependencyMessage": {
+    "description": "Default message for `424 (Failed Dependency)` HTTP client error response."
+  },
+  "upgradeRequiredMessage": "The server won't process the request with the current protocol",
+  "@upgradeRequiredMessage": {
+    "description": "Default message for `426 (Upgrade Required)` HTTP client error response."
+  },
+  "preconditionRequiredMessage": "Your request needs precondition headers",
+  "@preconditionRequiredMessage": {
+    "description": "Default message for `428 (Precondition Required)` HTTP client error response."
+  },
+  "tooManyRequestsMessage": "Too many requests in a short time",
+  "@tooManyRequestsMessage": {
+    "description": "Default message for `429 (Too Many Requests)` HTTP client error response."
+  },
+  "requestHeaderFieldsTooLargeMessage": "Your request header fields are too large to handle. Check the response body for the details",
+  "@requestHeaderFieldsTooLargeMessage": {
+    "description": "Default message for `431 (Request Header Fields Too Large)` HTTP client error response."
+  },
+  "unavailableForLegalReasonsMessage": "Your request is unavailable for legal reasons",
+  "@unavailableForLegalReasonsMessage": {
+    "description": "Default message for `451 (Unavailable For Legal Reasons)` HTTP client error response."
+  },
+  "@_HTTP_SERVER_ERROR": {},
+  "internalServerErrorMessage": "Sorry for the inconvenience",
+  "@internalServerErrorMessage": {
+    "description": "Default message for `500 (Internal Server Error)` HTTP server error response."
+  },
+  "notImplementedMessage": "This service is unavailable at the moment",
+  "@notImplementedMessage": {
+    "description": "Default message for `501 (Not Implemented)` HTTP server error response."
+  },
+  "badGatewayMessage": "Sorry for the inconvenience",
+  "@badGatewayMessage": {
+    "description": "Default message for `502 (Bad Gateway)` HTTP server error response."
+  },
+  "serviceUnavailableMessage": "The server is unavailable at the moment",
+  "@serviceUnavailableMessage": {
+    "description": "Default message for `503 (Service Unavailable)` HTTP server error response."
+  },
+  "gatewayTimeoutMessage": "Sorry for the inconvenience",
+  "@gatewayTimeoutMessage": {
+    "description": "Default message for `504 (Gateway Timeout)` HTTP server error response."
+  },
+  "httpVersionNotSupportedMessage": "The server does not support your HTTP version",
+  "@httpVersionNotSupportedMessage": {
+    "description": "Default message for `505 (HTTP Version Not Supported)` HTTP server error response."
+  },
+  "variantAlsoNegotiatesMessage": "Sorry for the inconvenience",
+  "@variantAlsoNegotiatesMessage": {
+    "description": "Default message for `506 (Variant Also Negotiates)` HTTP server error response."
+  },
+  "insufficientStorageMessage": "The server capacity is currently too full",
+  "@insufficientStorageMessage": {
+    "description": "Default message for `507 (Insufficient Storage)` HTTP server error response."
+  },
+  "loopDetectedMessage": "Infinite loop detected while processing your request",
+  "@loopDetectedMessage": {
+    "description": "Default message for `508 (Loop Detected)` HTTP server error response."
+  },
+  "notExtendedMessage": "Sorry for the inconvenience",
+  "@notExtendedMessage": {
+    "description": "Default message for `510 (Not Extended)` HTTP server error response."
+  },
+  "networkAuthenticationRequiredMessage": "Network authentication is required",
+  "@networkAuthenticationRequiredMessage": {
+    "description": "Default message for `511 (Network Authentication Required)` HTTP server error response."
+  }
+}
