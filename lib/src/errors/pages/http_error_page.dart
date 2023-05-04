@@ -1,9 +1,11 @@
+import 'package:core/l10n/generated/core_localizations.dart';
+import 'package:core/src/errors/models/http_response_exception.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/extensions.dart';
 import '../http_error_pages.dart';
 
-@Deprecated('Deprecated in 1.2.0. Use HttpErrorPage instead')
+@Deprecated('Use HttpErrorPage instead. Deprecated in v1.2.0.')
 typedef ErrorPage = HttpErrorPage;
 
 class HttpErrorPage extends StatelessWidget {
@@ -34,6 +36,14 @@ class HttpErrorPage extends StatelessWidget {
     this.message,
   });
 
+  factory HttpErrorPage.fromException(HttpResponseException exception) {
+    return HttpErrorPage(
+      statusCode: exception.statusCode,
+      name: exception.name,
+      message: exception.message,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,13 +53,13 @@ class HttpErrorPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('$statusCode', style: context.textTheme.headline3),
-              Text(name, style: context.textTheme.headline4),
+              Text('$statusCode', style: context.textTheme.displaySmall),
+              Text(name, style: context.textTheme.headlineMedium),
               const Divider(),
               Text(
                 message ?? '',
                 textAlign: TextAlign.center,
-                style: context.textTheme.headline6,
+                style: context.textTheme.titleLarge,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),

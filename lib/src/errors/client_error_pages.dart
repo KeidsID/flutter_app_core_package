@@ -1,159 +1,49 @@
 part of 'http_error_pages.dart';
 
-final Map<int, _GetDefinedErrorPage> _clientErrorsMap =
-    <int, HttpResponseException>{
-  400: HttpResponseException(
-    400,
-    'Bad Request',
-    message: '',
-  ),
-  401: HttpResponseException(
-    401,
-    'Unauthorized',
-    message: '',
-  ),
-  403: HttpResponseException(
-    403,
-    'Forbidden',
-    message: '',
-  ),
-  404: HttpResponseException(
-    404,
-    'Not Found',
-    message: '',
-  ),
-  405: HttpResponseException(
-    405,
-    'Method Not Allowed',
-    message: '',
-  ),
-  406: HttpResponseException(
-    406,
-    'Not Acceptable',
-    message: '',
-  ),
-  407: HttpResponseException(
-    407,
-    'Proxy Authentication Required',
-    message: '',
-  ),
-  408: HttpResponseException(
-    408,
-    'Request Timeout',
-    message: '',
-  ),
-  409: HttpResponseException(
-    409,
-    'Conflict',
-    message: '',
-  ),
-  410: HttpResponseException(
-    410,
-    'Gone',
-    message: '',
-  ),
-  411: HttpResponseException(
-    411,
-    'Length Required',
-    message: '',
-  ),
-  412: HttpResponseException(
-    412,
-    'Precondition Failed',
-    message: '',
-  ),
-  413: HttpResponseException(
-    413,
-    'Payload Too Large',
-    message: '',
-  ),
-  414: HttpResponseException(
-    414,
-    'URI Too Long',
-    message: '',
-  ),
-  415: HttpResponseException(
-    415,
-    'Unsupported Media Type',
-    message: '',
-  ),
-  416: HttpResponseException(
-    416,
-    'Range Not Satisfiable',
-    message: '',
-  ),
-  417: HttpResponseException(
-    417,
-    'Expectation Failed',
-    message: '',
-  ),
-  418: HttpResponseException(
-    418,
-    "I'm a teapot",
-    message: '',
-  ),
-  421: HttpResponseException(
-    421,
-    "Misdirected Request",
-    message: '',
-  ),
-  422: HttpResponseException(
-    422,
-    "Unprocessable Content",
-    message: '',
-  ),
-  423: HttpResponseException(
-    423,
-    "Locked",
-    message: '',
-  ),
-  424: HttpResponseException(
-    424,
-    "Failed Dependency",
-    message: '',
-  ),
-  426: HttpResponseException(
-    426,
-    "Upgrade Required",
-    message: '',
-  ),
-  428: HttpResponseException(
-    428,
-    "Precondition Required",
-    message: '',
-  ),
-  429: HttpResponseException(
-    429,
-    "Too Many Requests",
-    message: '',
-  ),
-  431: HttpResponseException(
-    431,
-    "Request Header Fields Too Large",
-    message: '',
-  ),
-  451: HttpResponseException(
-    451,
-    "Unavailable For Legal Reasons",
-    message: '',
-  ),
+final Map<int, _GetDefinedErrorPage> _clientErrorsMap = {
+  400: 'Bad Request',
+  401: 'Unauthorized',
+  403: 'Forbidden',
+  404: 'Not Found',
+  405: 'Method Not Allowed',
+  406: 'Not Acceptable',
+  407: 'Proxy Authentication Required',
+  408: 'Request Timeout',
+  409: 'Conflict',
+  410: 'Gone',
+  411: 'Length Required',
+  412: 'Precondition Failed',
+  413: 'Payload Too Large',
+  414: 'URI Too Long',
+  415: 'Unsupported Media Type',
+  416: 'Range Not Satisfiable',
+  417: 'Expectation Failed',
+  418: "I'm a teapot",
+  421: "Misdirected Request",
+  422: "Unprocessable Content",
+  423: "Locked",
+  424: "Failed Dependency",
+  426: "Upgrade Required",
+  428: "Precondition Required",
+  429: "Too Many Requests",
+  431: "Request Header Fields Too Large",
+  451: "Unavailable For Legal Reasons",
 }.map(
-  (statusCode, exception) => MapEntry(
+  (statusCode, name) => MapEntry(
     statusCode,
     ({Key? key, String? message}) {
       if (message == null) {
         return HttpErrorPage(
           key: key,
           statusCode: statusCode,
-          name: exception.name,
-          message: exception.message,
+          name: name,
         );
       }
 
       return HttpErrorPage(
         key: key,
         statusCode: statusCode,
-        name: exception.name,
+        name: name,
         message: message,
       );
     },

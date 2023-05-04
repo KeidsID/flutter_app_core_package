@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'models/http_response_exception.dart';
 import 'pages/http_error_page.dart';
 
 part 'client_error_pages.dart';
@@ -9,7 +8,7 @@ part 'server_error_pages.dart';
 typedef _GetDefinedErrorPage = HttpErrorPage Function(
     {Key? key, String? message});
 
-@Deprecated('Deprecated in 1.2.0. Use HttpErrorPages instead')
+@Deprecated('Use HttpErrorPages instead. Deprecated in v1.2.0.')
 typedef ErrorPages = HttpErrorPages;
 
 /// List of simple error pages based on MDN Web Docs

@@ -1,3 +1,15 @@
+## ???
+
+### Added
+
+- `AppException` (Default implementation of `Exception`. But the message is not private).
+- `HttpResponseException` (Data Model for `HttpErrorPage`).
+
+### Changed
+
+- `ErrorPage` to `HttpErrorPage`.
+- `ErrorPages` to `HttpErrorPages`.
+
 ## 1.1.0
 
 ### Added
