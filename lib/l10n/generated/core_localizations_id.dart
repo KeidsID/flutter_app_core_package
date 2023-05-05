@@ -19,7 +19,7 @@ class CoreLocalizationsId extends CoreLocalizations {
   String get forbiddenMessage => 'Tidak diizinkan untuk diakses';
 
   @override
-  String get notFoundMessage => 'Sumber yang anda minta tidak ditemukan';
+  String get notFoundMessage => 'Konten yang anda minta tidak ditemukan';
 
   @override
   String get methodNotAllowedMessage => 'Metode permintaan anda tidak didukung';
@@ -37,7 +37,7 @@ class CoreLocalizationsId extends CoreLocalizations {
   String get conflictMessage => 'Terjadi konflik di dalam server';
 
   @override
-  String get goneMessage => 'Sumber yang anda minta telah dihapus';
+  String get goneMessage => 'Konten yang anda minta telah dihapus';
 
   @override
   String get lengthRequiredMessage => 'Header `Content-Length` dibutuhkan';
@@ -70,7 +70,7 @@ class CoreLocalizationsId extends CoreLocalizations {
   String get unprocessableContentMessage => 'Tidak dapat ditangani karena kesalahan semantik';
 
   @override
-  String get lockedMessage => 'Sumber ini dilarang untuk diakses';
+  String get lockedMessage => 'Konten ini tidak dapat diakses';
 
   @override
   String get failedDependencyMessage => 'Kesalahan karena kegagalan dari permintaan sebelumnya';
@@ -88,7 +88,7 @@ class CoreLocalizationsId extends CoreLocalizations {
   String get requestHeaderFieldsTooLargeMessage => 'Header permintaan anda terlalu besar untuk ditangani. Cek badan respon server untuk detail lebih lanjut';
 
   @override
-  String get unavailableForLegalReasonsMessage => 'Permintaan anda tidak tersedia untuk alasan yang legal';
+  String get unavailableForLegalReasonsMessage => 'Konten ini diblokir oleh pemerintah';
 
   @override
   String get internalServerErrorMessage => 'Mohon maaf atas ketidaknyamanannya';

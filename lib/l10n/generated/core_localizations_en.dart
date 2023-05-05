@@ -19,7 +19,7 @@ class CoreLocalizationsEn extends CoreLocalizations {
   String get forbiddenMessage => 'Not allowed to be accessed';
 
   @override
-  String get notFoundMessage => 'The requested resource was not found';
+  String get notFoundMessage => 'Requested content not found';
 
   @override
   String get methodNotAllowedMessage => 'The requested method is not supported';
@@ -37,7 +37,7 @@ class CoreLocalizationsEn extends CoreLocalizations {
   String get conflictMessage => 'There was a conflict in the server\'s state';
 
   @override
-  String get goneMessage => 'The requested resource has been deleted';
+  String get goneMessage => 'Requested content has been removed';
 
   @override
   String get lengthRequiredMessage => '`Content-Length` header field is required';
@@ -70,7 +70,7 @@ class CoreLocalizationsEn extends CoreLocalizations {
   String get unprocessableContentMessage => 'Could not be handled because of a semantic error';
 
   @override
-  String get lockedMessage => 'The resource is forbidden to access';
+  String get lockedMessage => 'This content is inaccessible.';
 
   @override
   String get failedDependencyMessage => 'Error due a failure of a previous request';
@@ -88,7 +88,7 @@ class CoreLocalizationsEn extends CoreLocalizations {
   String get requestHeaderFieldsTooLargeMessage => 'Your request header fields are too large to handle. Check the response body for the details';
 
   @override
-  String get unavailableForLegalReasonsMessage => 'Your request is unavailable for legal reasons';
+  String get unavailableForLegalReasonsMessage => 'This content is blocked by the government';
 
   @override
   String get internalServerErrorMessage => 'Sorry for the inconvenience';

@@ -5,14 +5,23 @@ import 'pages/http_error_page.dart';
 part 'client_error_pages.dart';
 part 'server_error_pages.dart';
 
-typedef _GetDefinedErrorPage = HttpErrorPage Function(
-    {Key? key, String? message});
+typedef _GetDefinedErrorPage = HttpErrorPage Function({
+  Key? key,
+  String? message,
+  Widget? child,
+});
 
 @Deprecated('Use HttpErrorPages instead. Deprecated in v1.2.0.')
 typedef ErrorPages = HttpErrorPages;
 
-/// List of simple error pages based on MDN Web Docs
+/// List of simple HTTP error pages based on MDN Web Docs
 /// (https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).
+///
+/// Use it the same way you use [Colors].
+///
+/// ```dart
+/// HttpErrorPages.client.notFound(); // return HttpErrorPage widget
+/// ```
 abstract class HttpErrorPages {
   /// Client Error Responses (400-499 status codes).
   ///

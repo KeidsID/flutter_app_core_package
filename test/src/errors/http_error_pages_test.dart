@@ -1,11 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:core/src/errors/pages/http_error_page.dart';
 import 'package:core/src/errors/http_error_pages.dart';
 
 void main() {
-  group('ErrorPages', () {
-    test('.byCode() - A valid status code will return an ErrorPage', () {
+  group('HttpErrorPages', () {
+    test('.byCode() - A valid status code will return an HttpErrorPage', () {
       expect(HttpErrorPages.byCode(400), isA<HttpErrorPage>());
       expect(HttpErrorPages.byCode(500), isA<HttpErrorPage>());
     });
@@ -16,7 +17,27 @@ void main() {
 
     group('.client', () {
       const testDescTemplate =
-          '- return an ErrorPage with valid statusCode and name props.';
+          '- return a HttpErrorPage with valid statusCode and name props.';
+
+      testWidgets(
+        '.anyMethod(child) - return a HttpErrorPage with a child',
+        (tester) async {
+          const childKey = ValueKey('unit-test');
+
+          final widget = MaterialApp(
+            home: HttpErrorPages.client.badRequest(
+              child: TextButton(
+                key: childKey,
+                onPressed: () {},
+                child: const Text('Go to Home Page'),
+              ),
+            ),
+          );
+          await tester.pumpWidget(widget);
+
+          expect(find.byKey(childKey), findsOneWidget);
+        },
+      );
       test('.badRequest() $testDescTemplate', () {
         expect(HttpErrorPages.client.badRequest().statusCode, 400);
         expect(HttpErrorPages.client.badRequest().name, 'Bad Request');
@@ -193,7 +214,27 @@ void main() {
 
     group('.server', () {
       const testDescTemplate =
-          '- return an ErrorPage with valid statusCode and name props.';
+          '- return an HttpErrorPage with valid statusCode and name props.';
+
+      testWidgets(
+        '.anyMethod(child) - return a HttpErrorPage with a child',
+        (tester) async {
+          const childKey = ValueKey('unit-test');
+
+          final widget = MaterialApp(
+            home: HttpErrorPages.server.internalServerError(
+              child: TextButton(
+                key: childKey,
+                onPressed: () {},
+                child: const Text('Go to Home Page'),
+              ),
+            ),
+          );
+          await tester.pumpWidget(widget);
+
+          expect(find.byKey(childKey), findsOneWidget);
+        },
+      );
       test('.internalServerError() $testDescTemplate', () {
         expect(HttpErrorPages.server.internalServerError().statusCode, 500);
         expect(

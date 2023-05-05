@@ -13,21 +13,19 @@ final Map<int, _GetDefinedErrorPage> _serverErrorsMap = {
   510: 'Not Extended',
   511: 'Network Authentication Required',
 }.map(
-  (statusCode, name) => MapEntry(
-    statusCode,
-    ({Key? key, String? message}) {
-      if (message == null) {
-        return HttpErrorPage(key: key, statusCode: statusCode, name: name);
-      }
-
-      return HttpErrorPage(
-        key: key,
-        statusCode: statusCode,
-        name: name,
-        message: message,
-      );
-    },
-  ),
+  (statusCode, name) => MapEntry(statusCode, ({
+    Key? key,
+    String? message,
+    Widget? child,
+  }) {
+    return HttpErrorPage(
+      key: key,
+      statusCode: statusCode,
+      name: name,
+      message: message,
+      child: child,
+    );
+  }),
 );
 
 class _ServerErrorPages {

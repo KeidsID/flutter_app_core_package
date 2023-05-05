@@ -1,9 +1,12 @@
-## ???
+## 1.2.0
 
 ### Added
 
-- `AppException` (Default implementation of `Exception`. But the message is not private).
-- `HttpResponseException` (Data Model for `HttpErrorPage`).
+- `AppException` (Default implementation of `Exception`. But the message is not
+  private).
+- `HttpResponseException` (Data model for `HttpErrorPage`).
+- `HttpErrorPage` will have a default message that varies according to the given
+  status code. The messages are also localized (English and Bahasa Indonesia).
 
 ### Changed
 

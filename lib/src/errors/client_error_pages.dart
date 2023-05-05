@@ -29,25 +29,19 @@ final Map<int, _GetDefinedErrorPage> _clientErrorsMap = {
   431: "Request Header Fields Too Large",
   451: "Unavailable For Legal Reasons",
 }.map(
-  (statusCode, name) => MapEntry(
-    statusCode,
-    ({Key? key, String? message}) {
-      if (message == null) {
-        return HttpErrorPage(
-          key: key,
-          statusCode: statusCode,
-          name: name,
-        );
-      }
-
-      return HttpErrorPage(
-        key: key,
-        statusCode: statusCode,
-        name: name,
-        message: message,
-      );
-    },
-  ),
+  (statusCode, name) => MapEntry(statusCode, ({
+    Key? key,
+    String? message,
+    Widget? child,
+  }) {
+    return HttpErrorPage(
+      key: key,
+      statusCode: statusCode,
+      name: name,
+      message: message,
+      child: child,
+    );
+  }),
 );
 
 class _ClientErrorPages {

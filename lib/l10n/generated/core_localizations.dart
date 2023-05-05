@@ -120,7 +120,7 @@ abstract class CoreLocalizations {
   /// Default message for `404 (Not Found)` HTTP client error response.
   ///
   /// In en, this message translates to:
-  /// **'The requested resource was not found'**
+  /// **'Requested content not found'**
   String get notFoundMessage;
 
   /// Default message for `405 (Method Not Allowed)` HTTP client error response.
@@ -156,7 +156,7 @@ abstract class CoreLocalizations {
   /// Default message for `410 (Gone)` HTTP client error response.
   ///
   /// In en, this message translates to:
-  /// **'The requested resource has been deleted'**
+  /// **'Requested content has been removed'**
   String get goneMessage;
 
   /// Default message for `411 (Length Required)` HTTP client error response.
@@ -222,7 +222,7 @@ abstract class CoreLocalizations {
   /// Default message for `423 (Locked)` HTTP client error response.
   ///
   /// In en, this message translates to:
-  /// **'The resource is forbidden to access'**
+  /// **'This content is inaccessible.'**
   String get lockedMessage;
 
   /// Default message for `424 (Failed Dependency)` HTTP client error response.
@@ -258,7 +258,7 @@ abstract class CoreLocalizations {
   /// Default message for `451 (Unavailable For Legal Reasons)` HTTP client error response.
   ///
   /// In en, this message translates to:
-  /// **'Your request is unavailable for legal reasons'**
+  /// **'This content is blocked by the government'**
   String get unavailableForLegalReasonsMessage;
 
   /// Default message for `500 (Internal Server Error)` HTTP server error response.

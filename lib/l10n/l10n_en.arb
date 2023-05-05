@@ -22,7 +22,7 @@
   "@forbiddenMessage": {
     "description": "Default message for `403 (Forbidden)` HTTP client error response."
   },
-  "notFoundMessage": "The requested resource was not found",
+  "notFoundMessage": "Requested content not found",
   "@notFoundMessage": {
     "description": "Default message for `404 (Not Found)` HTTP client error response."
   },
@@ -46,7 +46,7 @@
   "@conflictMessage": {
     "description": "Default message for `409 (Conflict)` HTTP client error response."
   },
-  "goneMessage": "The requested resource has been deleted",
+  "goneMessage": "Requested content has been removed",
   "@goneMessage": {
     "description": "Default message for `410 (Gone)` HTTP client error response."
   },
@@ -90,7 +90,7 @@
   "@unprocessableContentMessage": {
     "description": "Default message for `422 (Unprocessable Content)` HTTP client error response."
   },
-  "lockedMessage": "The resource is forbidden to access",
+  "lockedMessage": "This content is inaccessible.",
   "@lockedMessage": {
     "description": "Default message for `423 (Locked)` HTTP client error response."
   },
@@ -114,7 +114,7 @@
   "@requestHeaderFieldsTooLargeMessage": {
     "description": "Default message for `431 (Request Header Fields Too Large)` HTTP client error response."
   },
-  "unavailableForLegalReasonsMessage": "Your request is unavailable for legal reasons",
+  "unavailableForLegalReasonsMessage": "This content is blocked by the government",
   "@unavailableForLegalReasonsMessage": {
     "description": "Default message for `451 (Unavailable For Legal Reasons)` HTTP client error response."
   },
