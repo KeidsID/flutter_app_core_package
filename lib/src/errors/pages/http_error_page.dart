@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 
 import '../../../l10n/generated/core_localizations.dart';
 import '../../utils/extensions.dart';
+import '../data/client_errors_map.dart';
+import '../data/server_errors_map.dart';
 import '../http_error_pages.dart';
 import '../models/http_response_exception.dart';
 
-@Deprecated('Use HttpErrorPage instead. Deprecated in v1.2.0.')
+@Deprecated('Use HttpErrorPage instead. Deprecated in v1.2.1.')
 typedef ErrorPage = HttpErrorPage;
 
+/// Page that displays the basic info of the HTTP Error Response.
 class HttpErrorPage extends StatelessWidget {
   final int statusCode;
-  final String name;
   final String? message;
 
   /// Creates a Widget to be displayed below the message.
@@ -18,26 +20,24 @@ class HttpErrorPage extends StatelessWidget {
   /// Typically a [TextButton] that redirects back to the home page.
   final Widget? child;
 
-  /// Page to display Http errors info.
+  /// Creates page based on the HTTP response status code. If you want to create
+  /// it based on the error name (e.g. "notFound", etc.), please refer to
+  /// [HttpErrorPages].
+  ///
+  /// Aside from the status code for HTTP Error, the page will be displayed as
+  /// "Undefined Response".
   ///
   /// Usage example:
   ///
   /// ```dart
-  /// Widget onNotFoundError({String? message}) {
-  ///   return HttpErrorPage(
-  ///     statusCode: 404,
-  ///     name: 'Not Found',
-  ///     message: message,
-  ///   );
-  /// }
+  /// HttpErrorPage(
+  ///   statusCode: 404,
+  ///   message: message,
+  /// );
   /// ```
-  ///
-  /// Use this method exclusively to create a custom HTTP error page. If you
-  /// require pre-defined pages, please refer to [HttpErrorPages].
   const HttpErrorPage({
     super.key,
     required this.statusCode,
-    required this.name,
     this.message,
     this.child,
   });
@@ -49,7 +49,6 @@ class HttpErrorPage extends StatelessWidget {
   }) {
     return HttpErrorPage(
       statusCode: exception.statusCode,
-      name: exception.name,
       message: exception.message,
       child: child,
     );
@@ -59,11 +58,21 @@ class HttpErrorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = CoreLocalizations.of(context);
     final textTheme = context.textTheme;
+
+    const errorResponsesMap = {
+      ...clientErrorsMap,
+      ...serverErrorsMap,
+    };
+
+    final String name = errorResponsesMap[statusCode] ?? 'Undefined Response';
+
     String? defaultMessage;
 
     if (l10n != null) {
-      final localizedDefaultMsgMap = _clientErrorMessageMap(l10n)
-        ..addAll(_serverErrorMessageMap(l10n));
+      final localizedDefaultMsgMap = {
+        ..._clientErrorMessageMap(l10n),
+        ..._serverErrorMessageMap(l10n),
+      };
 
       defaultMessage = localizedDefaultMsgMap[statusCode];
     }

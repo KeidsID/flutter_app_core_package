@@ -14,7 +14,6 @@ void main() {
     const widget = MaterialApp(
       home: HttpErrorPage(
         statusCode: statusCode,
-        name: name,
       ),
     );
     await tester.pumpWidget(widget);
@@ -37,7 +36,6 @@ void main() {
       locale: Locale('en'),
       home: HttpErrorPage(
         statusCode: statusCode,
-        name: name,
       ),
     );
     await tester.pumpWidget(widget);
@@ -59,7 +57,6 @@ void main() {
       const widget = MaterialApp(
         home: HttpErrorPage(
           statusCode: statusCode,
-          name: name,
           message: message,
         ),
       );
@@ -81,7 +78,6 @@ void main() {
     final widget = MaterialApp(
       home: HttpErrorPage(
         statusCode: statusCode,
-        name: name,
         child: TextButton(
           key: childKey,
           onPressed: () {},
