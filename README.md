@@ -86,7 +86,7 @@ Great for creating lots of Flutter apps as a portfolio.
   // The message displayed below statusCode and name.
   HttpErrorPages.client.notFound(message: 'The Page You Requested Not Found');
 
-  // Create `HttpErrorPage` directly if you need a page based on the response 
+  // Create `HttpErrorPage` directly if you need a page based on the response
   // status code.
   HttpErrorPage(404); // Will return 'Not Found' page.
 
@@ -95,7 +95,7 @@ Great for creating lots of Flutter apps as a portfolio.
 
   ### HttpErrorPages previews:
 
-  ![HttpErrorPages preview (403 -  Forbidden)](readme_assets/error_pages_preview/403.png)
+  ![HttpErrorPage preview](readme_assets/http_error_page_preview.png)
 
   - Or do you just need an `Exception` model to handle HTTP response errors? Try
     using `HttpResponseException` from this package.
