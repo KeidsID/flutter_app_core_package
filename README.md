@@ -13,10 +13,10 @@ and the Flutter guide for
 
 ![CI status](https://api.codemagic.io/apps/643d42ab38ef8225c156a310/643d42ab38ef8225c156a30f/status_badge.svg)
 
-A package that provide basic utils like Themes, common BuildContext extension
-and simple Error Page widget.
+A package that provides basic utils like Themes, a common BuildContext
+extension, and a simple Error Page widget.
 
-Great for creating lots of flutter apps as a portfolio.
+Great for creating lots of Flutter apps as a portfolio.
 
 ## Features
 
@@ -41,8 +41,8 @@ Great for creating lots of flutter apps as a portfolio.
   }
   ```
 
-- Need shorthand for the common use of context? Try the BuildContext
-  extension from this package:
+- Need shorthand for the common use of context? Try the BuildContext extension
+  from this package:
 
   ```dart
   import 'package:core/core.dart';
@@ -68,36 +68,41 @@ Great for creating lots of flutter apps as a portfolio.
   }
   ```
 
-- Need a simple page to display error info? try `ErrorPages` from the package:
+- Need a simple page to display errors from HTTP responses? Try `HttpErrorPages`
+  from the package:
 
   ```dart
   import 'package:core/core.dart';
 
   // Will display status code 400 with 'Bad Request' text below it.
-  ErrorPages.client.badRequest();
+  HttpErrorPages.client.badRequest();
 
   // Will display status code 500 with 'Internal Server Error' text below it.
-  ErrorPages.server.internalServerError();
-
-  // Will display page based on requested status code.
-  //
-  // The Example below will display status code 404 with
-  // 'Not Found' text below it.
-  ErrorPages.byCode(404);
+  HttpErrorPages.server.internalServerError();
 
   // You can also add custom message to the page
   // (Default message is 'Sorry for the inconvenience').
   //
   // The message displayed below statusCode and name.
-  ErrorPages.client.notFound(message: 'The Page You Requested Not Found');
-  ErrorPages.byCode(403, message: 'You are not allowed to access this');
+  HttpErrorPages.client.notFound(message: 'The Page You Requested Not Found');
 
-  // See preview below for page visual.
+  // Create `HttpErrorPage` directly if you need a page based on the response 
+  // status code.
+  HttpErrorPage(404); // Will return 'Not Found' page.
+
+  // See preview below for the page preview.
   ```
 
-  ### ErrorPages previews:
+  ### HttpErrorPages previews:
 
-  ![ErrorPages preview (403 -  Forbidden)](readme_assets/error_pages_preview/403.png)
+  ![HttpErrorPages preview (403 -  Forbidden)](readme_assets/error_pages_preview/403.png)
+
+  - Or do you just need an `Exception` model to handle HTTP response errors? Try
+    using `HttpResponseException` from this package.
+
+    ```dart
+    throw HttpResponseException(response.code);
+    ```
 
 ## Getting started
 
@@ -124,8 +129,8 @@ Great for creating lots of flutter apps as a portfolio.
    You can also customize the Theme via `init()`:
 
    ```dart
-   import 'package:flutter/material.dart';
    import 'package:core/core.dart' as core;
+   import 'package:flutter/material.dart';
 
    void main() {
      core.init(
@@ -137,15 +142,37 @@ Great for creating lots of flutter apps as a portfolio.
    }
    ```
 
+3. You can also add `CoreLocalizations.delegate` to your app to localize the
+   default message of `HttpErrorPage`.
+
+   ```dart
+   import 'package:core/core.dart' as core;
+   import 'package:flutter/material.dart';
+
+   class MyApp extends StatelessWidget {
+     const MyApp({super.key});
+
+     @override
+     Widget build(BuildContext context) {
+       return MaterialApp(
+         ...
+         localizationsDelegates: CoreLocalizations.localizationsDelegates,
+         supportedLocales: CoreLocalizations.supportedLocales,
+         ...
+       );
+     }
+   }
+   ```
+
 Now, you are ready to use this package's utilities.
 
 ## Usage
 
-main.dart
+Simple usage example:
 
 ```dart
-import 'package:flutter/material.dart';
 import 'package:core/core.dart' as core;
+import 'package:flutter/material.dart';
 
 void main() {
   core.init(
@@ -164,20 +191,34 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: core.appName, // "Flutter Demo"
       // Both theme used material 3
-      theme: core.AppThemes.light, 
+      theme: core.AppThemes.light,
       darkTheme: core.AppThemes.dark,
       themeMode: ThemeMode.system,
+      // To localize default message of [HttpErrorPage]
+      localizationsDelegates: CoreLocalizations.localizationsDelegates,
+      supportedLocales: CoreLocalizations.supportedLocales,
       // Simple page to display 404 Not Found
-      home: core.ErrorPages.client.notFound(), 
+      home: core.HttpErrorPages.client.notFound(),
     );
   }
 }
 ```
 
-<!--
-## Additional information
+## Contributing Localizations
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
--->
+If you want to contribute by adding new localizations please follow these steps:
+
+1. [Fork the repo](https://github.com/KeidsID/flutter_app_core_package/fork).
+2. Copy the `lib/l10n/l10n_id.arb` file into the `lib/l10n` folder with a new
+   language code, following
+   [this list of ISO 859-1 codes](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
+   Why copy `l10n_id.arb`? So that you no longer need to delete the template in
+   `l10n_en.arb` and focus on localization only.
+3. Update the contents in the newly created file. Especially, please update the
+   `@locale` value with the corresponding ISO code.
+4. Then do the `flutter gen-l10n` command to generate your localization.
+5. When you're done,
+   [make a new pull request](https://github.com/KeidsID/flutter_app_core_package/pulls)
+
+More about
+[Localization in the Flutter Official Documentation](https://docs.flutter.dev/development/accessibility-and-localization/internationalization).

@@ -1,40 +1,27 @@
-part of 'error_pages.dart';
+part of 'http_error_pages.dart';
 
-final Map<int, _GetDefinedErrorPage> _serverErrorPagesMap = {
-  500: 'Internal Server Error',
-  501: 'Not Implemented',
-  502: 'Bad Gateway',
-  503: 'Service Unavailable',
-  504: 'Gateway Timeout',
-  505: 'HTTP Version Not Supported',
-  506: 'Variant Also Negotiates',
-  507: 'Insufficient Storage',
-  508: 'Loop Detected',
-  510: 'Not Extended',
-  511: 'Network Authentication Required',
-}.map(
-  (statusCode, name) => MapEntry(
-    statusCode,
-    ({Key? key, String? message}) {
-      if (message == null) {
-        return ErrorPage(key: key, statusCode: statusCode, name: name);
-      }
-
-      return ErrorPage(
-        key: key,
-        statusCode: statusCode,
-        name: name,
-        message: message,
-      );
-    },
-  ),
+final Map<int, _GetHttpErrorPage> _getServerErrorPageMap = serverErrorsMap.map(
+  (statusCode, name) => MapEntry(statusCode, ({
+    Key? key,
+    String? message,
+    Widget? child,
+  }) {
+    return HttpErrorPage(
+      key: key,
+      statusCode: statusCode,
+      message: message,
+      child: child,
+    );
+  }),
 );
 
 class _ServerErrorPages {
+  // Please sort the props by status code.
+
   /// `500 Internal Server Error`
   ///
   /// The server has encountered a situation it does not know how to handle.
-  final _GetDefinedErrorPage internalServerError;
+  final _GetHttpErrorPage internalServerError;
 
   /// `501 Not Implemented`
   ///
@@ -46,13 +33,13 @@ class _ServerErrorPages {
   ///
   /// If the server does recognize the method, but intentionally does not
   /// support it, the appropriate response is `405 Method Not Allowed`.
-  final _GetDefinedErrorPage notImplemented;
+  final _GetHttpErrorPage notImplemented;
 
   /// `502 Bad Gateway`
   ///
   /// The server, while acting as a gateway or proxy, received an invalid
   /// response from the upstream server.
-  final _GetDefinedErrorPage badGateway;
+  final _GetHttpErrorPage badGateway;
 
   /// `503 Service Unavailable`
   ///
@@ -62,19 +49,19 @@ class _ServerErrorPages {
   /// overloaded. This response should be used for temporary conditions and the
   /// `Retry-After` HTTP header should, if possible, contain the estimated time
   /// for the recovery of the service.
-  final _GetDefinedErrorPage serviceUnavailable;
+  final _GetHttpErrorPage serviceUnavailable;
 
   /// `504 Gateway Timeout`
   ///
   /// The server, while acting as a gateway or proxy, did not get a response in
   /// time from the upstream server that it needed in order to complete the
   /// request.
-  final _GetDefinedErrorPage gatewayTimeout;
+  final _GetHttpErrorPage gatewayTimeout;
 
   /// `505 HTTP Version Not Supported`
   ///
   /// The HTTP version used in the request is not supported by the server.
-  final _GetDefinedErrorPage httpVersionNotSupported;
+  final _GetHttpErrorPage httpVersionNotSupported;
 
   /// `506 Variant Also Negotiates`
   ///
@@ -87,19 +74,19 @@ class _ServerErrorPages {
   /// Specifically, the chosen variant resource is also configured to engage in
   /// content negotiation, which makes it unsuitable as a proper negotiation
   /// endpoint.
-  final _GetDefinedErrorPage variantAlsoNegotiates;
+  final _GetHttpErrorPage variantAlsoNegotiates;
 
   /// `507 Insufficient Storage`
   ///
   /// The method could not be performed on the resource because the server is
   /// unable to store the representation needed to successfully complete the
   /// request.
-  final _GetDefinedErrorPage insufficientStorage;
+  final _GetHttpErrorPage insufficientStorage;
 
   /// `508 Loop Detected`
   ///
   /// The server detected an infinite loop while processing the request.
-  final _GetDefinedErrorPage loopDetected;
+  final _GetHttpErrorPage loopDetected;
 
   /// `510 Not Extended`
   ///
@@ -112,7 +99,7 @@ class _ServerErrorPages {
   /// server receives such a request, but any described extensions are not
   /// supported for the request, then the server responds with the `510` status
   /// code.
-  final _GetDefinedErrorPage notExtended;
+  final _GetHttpErrorPage notExtended;
 
   /// `511 Network Authentication Required`
   ///
@@ -126,7 +113,7 @@ class _ServerErrorPages {
   /// (for example in an internet café or at an airport). They often identify
   /// clients who have not done so using their Media Access Control (MAC)
   /// addresses.
-  final _GetDefinedErrorPage networkAuthenticationRequired;
+  final _GetHttpErrorPage networkAuthenticationRequired;
 
   const _ServerErrorPages({
     required this.internalServerError,
