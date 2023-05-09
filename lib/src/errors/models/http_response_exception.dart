@@ -9,7 +9,7 @@ class HttpResponseException implements Exception {
 
   /// An HTTP Response Exception.
   HttpResponseException(this.statusCode, {this.message}) {
-    final errorResponsesMap = clientErrorsMap..addAll(serverErrorsMap);
+    final errorResponsesMap = {...clientErrorsMap, ...serverErrorsMap};
 
     name = errorResponsesMap[statusCode] ?? 'undefined responses';
   }

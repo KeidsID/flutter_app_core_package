@@ -33,5 +33,11 @@ extension CommonCtxUsage on BuildContext {
   /// encloses the given context.
   ///
   /// It's shorthand for `Scaffold.of(context)`
-  ScaffoldState get scaffoldState => Scaffold.of(this);
+  ScaffoldState get scaffold => Scaffold.of(this);
+
+  /// Finds the [ScaffoldMessengerState] from the closest instance of this class
+  /// that encloses the given context.
+  ///
+  /// It's shorthand for `ScaffoldMessenger.of(context)`
+  ScaffoldMessengerState get scaffoldMessenger => ScaffoldMessenger.of(this);
 }
