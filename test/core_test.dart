@@ -8,7 +8,7 @@ void main() {
   const defaultAppPrimaryColor = Colors.blue;
 
   group('By default, init()', () {
-    setUpAll(() => core.init());
+    setUp(() => core.init());
 
     test('returns the expected value for the app data', () {
       expect(core.appName, defaultAppName);
@@ -36,7 +36,7 @@ void main() {
       const userAppName = 'Flutter Demo';
       const userAppPrimaryColor = Colors.purple;
 
-      setUpAll(() {
+      setUp(() {
         core.init(
           appName: userAppName,
           appPrimaryColor: userAppPrimaryColor,
@@ -69,10 +69,10 @@ void main() {
     group('init(appSecondaryColor, appTextTheme)', () {
       const userAppSecondaryColor = Colors.purple;
       const userAppTextTheme = TextTheme(
-        headline1: TextStyle(fontWeight: FontWeight.w300),
+        displayLarge: TextStyle(fontWeight: FontWeight.w300),
       );
 
-      setUpAll(() {
+      setUp(() {
         core.init(
           appSecondaryColor: userAppSecondaryColor,
           appTextTheme: userAppTextTheme,
@@ -105,7 +105,7 @@ void main() {
     group('init(useMaterial3: true)', () {
       const isMaterial3 = true;
 
-      setUpAll(() => core.init(useMaterial3: isMaterial3));
+      setUp(() => core.init(useMaterial3: isMaterial3));
 
       test('returns the expected value for the app data', () {
         expect(core.appName, defaultAppName);

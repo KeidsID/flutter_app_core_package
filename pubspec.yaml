@@ -1,7 +1,9 @@
 name: core
-description: A package that provides basic utilities such as Themes and HTTP Errors Page. Great for creating multiple flutter apps as a portfolio.
+description:
+  A package that provides basic utilities such as Themes and HTTP Errors Page.
+  Great for creating multiple flutter apps as a portfolio.
 version: 1.2.1
-homepage:
+# homepage:
 publish_to: "none"
 
 environment:
@@ -13,7 +15,6 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-
   intl: ^0.17.0
 
 dev_dependencies:
