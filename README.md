@@ -11,7 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-![CI status](https://api.codemagic.io/apps/643d42ab38ef8225c156a310/643d42ab38ef8225c156a30f/status_badge.svg)
+![CI status](https://api.codemagic.io/apps/643d42ab38ef8225c156a310/default-workflow/status_badge.svg)
 
 A package that provides basic utils like Themes, a common BuildContext
 extension, and a simple Error Page widget.
